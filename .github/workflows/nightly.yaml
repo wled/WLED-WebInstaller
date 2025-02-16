@@ -7,4 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo "Download files listed in https://api.github.com/repos/wled-dev/WLED/releases/200568682"
+      - run: |
+      	  echo "Download files listed in https://api.github.com/repos/wled-dev/WLED/releases/200568682/assets"
+      	  mkdir -p bin/nightly
+      	  cd bin/nightly
+      	  rm -f *.bin
+      	  curl https://api.github.com/repos/wled-dev/WLED/releases/200568682/assets | jq '.[].browser_download_url' | xargs wget
