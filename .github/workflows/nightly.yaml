@@ -1,0 +1,10 @@
+name: Nightly Update
+on:
+  repository_dispatch:
+    types: [release-nightly]
+jobs:
+  myEvent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "Download files listed in https://api.github.com/repos/wled-dev/WLED/releases/200568682"
