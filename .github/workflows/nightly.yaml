@@ -1,5 +1,6 @@
 name: Nightly Update
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [release-nightly]
 jobs:
