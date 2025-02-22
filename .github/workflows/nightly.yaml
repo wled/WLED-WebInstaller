@@ -12,7 +12,7 @@ jobs:
           echo "Download files listed in https://api.github.com/repos/wled/WLED/releases/200568682/assets"
           mkdir -p bin/nightly
           cd bin/nightly
-          find ./ -name *.bin* -exec git rm -f {} \;
+          find ./ -name \*.bin\* -exec git rm -f {} \;
           curl https://api.github.com/repos/wled/WLED/releases/200568682/assets | jq '.[].browser_download_url' | xargs wget
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
