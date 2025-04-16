@@ -28,12 +28,11 @@
   <!-- add new builds here -->
   <select id="ver" class="btn" onchange="resetCheckboxes();setManifest();">
     
-    <optgroup label="Pre-Release">
-      <option data-manifest="bin/release-candidate_0_15_0_RC-1/manifest.json"
-        data-ethernet="bin/release-candidate_0_15_0_RC-1/manifest_e.json"
-        data-test = "bin/release-candidate_0_15_0_RC-1/manifest_t.json"
-        >0.15.0-RC1</option>
-      </optgroup>
+    <optgroup label="Nightly">
+      <option data-manifest="bin/beta_0_15_0-b7/manifest.json"
+        data-ethernet="bin/beta_0_15_0-b7/manifest_e.json"
+        data-test = "bin/beta_0_15_0-b7/manifest_t.json"
+        >0.16.0 Nightly </option>
     <optgroup label="Beta">
       <option data-manifest="bin/beta_0_15_0-b7/manifest.json"
         data-ethernet="bin/beta_0_15_0-b7/manifest_e.json"
@@ -70,6 +69,10 @@
     </optgroup>
  
     <optgroup label="Release">
+      <option data-manifest="bin/release_0_15_0/manifest.json"
+        data-ethernet="bin/release_0_15_0/manifest_e.json"
+        data-test = "bin/beta_0_15_0/manifest_t.json"
+        >0.15.0</option>
       <option data-manifest="bin/release_0_14_4/manifest.json"
         data-ethernet="bin/release_0_14_4/manifest_e.json"
         data-audio = "bin/release_0_14_4/manifest_a.json"
@@ -80,31 +83,7 @@
         data-audio = "bin/release_0_14_3/manifest_a.json"
         data-test = "bin/beta_0_14_3/manifest_t.json"
         >0.14.3</option>
-      <option data-manifest="bin/release_0_14_2/manifest.json"
-        data-ethernet="bin/release_0_14_2/manifest_e.json"
-        data-audio = "bin/release_0_14_2/manifest_a.json"
-        data-test = "bin/beta_0_14_2/manifest_t.json"
-        >0.14.2</option>
-      <option data-manifest="bin/release_0_14_1/manifest.json"
-        data-ethernet="bin/release_0_14_1/manifest_e.json"
-        data-audio = "bin/release_0_14_1/manifest_a.json"
-        >0.14.1</option>
-      <option data-manifest="bin/release_0_14_0/manifest.json"
-        data-ethernet="bin/release_0_14_0/manifest_e.json"
-        data-audio = "bin/release_0_14_0/manifest_a.json"
-        >0.14.0</option>
-      <option data-manifest="bin/release_0_13_3/manifest.json"
-        data-ethernet="bin/release_0_13_3/manifest_e.json"
-        >0.13.3</option>
-      <option data-manifest="bin/release_0_13_1/manifest.json"
-        data-ethernet="bin/release_0_13_1/manifest_e.json"
-        >0.13.1</option>
-    
-    <optgroup label="Sound Reactive (deprecated)">
-      <option data-manifest="bin/sr_0_13_4/manifest.json"
-        data-ethernet="bin/sr_0_13_4/manifest_e.json"
-        >0.13.4 </option>
-    </optgroup>
+      </optgroup>
   </select><br>
 
   <div class="radio" onchange="setManifest()">
