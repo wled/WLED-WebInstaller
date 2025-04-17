@@ -1,8 +1,8 @@
-name: Nightly Update
+name: Nightly Update - disabled
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [release-nightly]
+    # types: [release-nightly]
 jobs:
   download-bins:
     runs-on: ubuntu-latest
