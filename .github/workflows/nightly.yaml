@@ -1,7 +1,7 @@
 name: Nightly Update - disabled
 on:
   workflow_dispatch:
-  repository_dispatch:
+  # repository_dispatch:
     # types: [release-nightly]
 jobs:
   download-bins:
