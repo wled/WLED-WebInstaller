@@ -9,7 +9,7 @@
 	<title>Install WLED</title>
   <script
     type="module"
-    src="installer/install-button.js"
+    src="https://unpkg.com/esp-web-tools@10.1.0/dist/web/install-button.js?module"
   ></script>
 </head>
 <body onload="checkSupported()">
@@ -29,48 +29,39 @@
   <select id="ver" class="btn" onchange="resetCheckboxes();setManifest();">
     
     
-    
+    <optgroup label="Beta">
+      <option data-manifest="bin/Beta/beta_0_15_1-b2/manifest.json"
+        data-ethernet="bin/Beta/beta_0_15_1-b2/manifest_e.json"
+        data-test = "bin/Beta/beta_0_15_1-b2/manifest_t.json"
+        >0.15.1-b2</option>
+      <option data-manifest="bin/Beta/beta_0_15_1-b1/manifest.json"
+        data-ethernet="bin/Beta/beta_0_15_1-b1/manifest_e.json"
+        data-test = "bin/Beta/beta_0_15_1-b1/manifest_t.json"
+        >0.15.1-b1</option>      
+    </optgroup>
  
     <optgroup label="Release">
-      <option data-manifest="bin/release_0_15_0/manifest.json"
-      data-ethernet="bin/release_0_15_0/manifest_e.json"
-      data-test = "bin/release_0_15_0/manifest_t.json"
-      >0.15.0</option>
-      <option data-manifest="bin/release_0_14_4/manifest.json"
-        data-ethernet="bin/release_0_14_4/manifest_e.json"
-        data-audio = "bin/release_0_14_4/manifest_a.json"
-        data-test = "bin/beta_0_14_4/manifest_t.json"
+      <option data-manifest="bin/Release/release_0_15_0/manifest.json"
+        data-ethernet="bin/Release/release_0_15_0/manifest_e.json"
+        data-test = "bin/Release/release_0_15_0/manifest_t.json"
+        >0.15.0</option>
+      <option data-manifest="bin/Release/release_0_14_4/manifest.json"
+        data-ethernet="bin/Release/release_0_14_4/manifest_e.json"
+        data-audio = "bin/Release/release_0_14_4/manifest_a.json"
+        data-test = "bin/Release/release_0_14_4/manifest_t.json"
         >0.14.4</option>
-      <option data-manifest="bin/release_0_14_3/manifest.json"
-        data-ethernet="bin/release_0_14_3/manifest_e.json"
-        data-audio = "bin/release_0_14_3/manifest_a.json"
-        data-test = "bin/beta_0_14_3/manifest_t.json"
+      <option data-manifest="bin/Release/release_0_14_3/manifest.json"
+        data-ethernet="bin/Release/release_0_14_3/manifest_e.json"
+        data-audio = "bin/Release/release_0_14_3/manifest_a.json"
+        data-test = "bin/Release/release_0_14_3/manifest_t.json"
         >0.14.3</option>
-      <option data-manifest="bin/release_0_14_2/manifest.json"
-        data-ethernet="bin/release_0_14_2/manifest_e.json"
-        data-audio = "bin/release_0_14_2/manifest_a.json"
-        data-test = "bin/beta_0_14_2/manifest_t.json"
-        >0.14.2</option>
-      <option data-manifest="bin/release_0_14_1/manifest.json"
-        data-ethernet="bin/release_0_14_1/manifest_e.json"
-        data-audio = "bin/release_0_14_1/manifest_a.json"
-        >0.14.1</option>
-      <option data-manifest="bin/release_0_14_0/manifest.json"
-        data-ethernet="bin/release_0_14_0/manifest_e.json"
-        data-audio = "bin/release_0_14_0/manifest_a.json"
-        >0.14.0</option>
-      <option data-manifest="bin/release_0_13_3/manifest.json"
-        data-ethernet="bin/release_0_13_3/manifest_e.json"
-        >0.13.3</option>
-      <option data-manifest="bin/release_0_13_1/manifest.json"
-        data-ethernet="bin/release_0_13_1/manifest_e.json"
-        >0.13.1</option>
-    
-    <optgroup label="Sound Reactive (deprecated)">
-      <option data-manifest="bin/sr_0_13_4/manifest.json"
-        data-ethernet="bin/sr_0_13_4/manifest_e.json"
-        >0.13.4 </option>
-    </optgroup>
+      </optgroup>
+      <optgroup label="Nightly">
+      <option data-manifest="bin/Beta/beta_0_15_0-b7/manifest.json"
+        data-ethernet="bin/Beta/beta_0_15_0-b7/manifest_e.json"
+        data-test = "bin/Beta/beta_0_15_0-b7/manifest_t.json"
+        >0.16.0 Nightly </option>
+      </optgroup>
   </select><br>
 
   <div class="radio" onchange="setManifest()">
