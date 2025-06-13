@@ -136,6 +136,18 @@ li {
     padding: 0;
 }
 
+.showOnLinux {
+    display: none;
+}
+
+body.linux .showOnLinux {
+    display: inline-block;
+}
+
+body.linux .hideOnLinux {
+    display: none;
+}
+
 @media (prefers-color-scheme: dark) {
     ewt-install-dialog {
         /*--mdc-theme-primary: #ffa000; /*buttons*/
