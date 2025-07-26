@@ -2,6 +2,7 @@
   "name": "WLED",
   "version": "0.15.0/2412100 ethernet",
   "home_assistant_domain": "wled",
+  "new_install_prompt_erase": true,
   "builds": [
     {
       "chipFamily": "ESP32",
