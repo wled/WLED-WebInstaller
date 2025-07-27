@@ -7,7 +7,7 @@
       "chipFamily": "ESP32",
       "parts": [
         { "path": "esp32_bootloader_v4.bin", "offset": 0 },
-        { "path": https://corsproxy.io/?url=https://github.com/wled/Wled/releases/download/v0.14.4/WLED_0.14.4_ESP32_audioreactive.bin", "offset": 65536 }
+        { "path": "https://corsproxy.io/?url=https://github.com/wled/Wled/releases/download/v0.14.4/WLED_0.14.4_ESP32_audioreactive.bin", "offset": 65536 }
       ]
     }
   ]
