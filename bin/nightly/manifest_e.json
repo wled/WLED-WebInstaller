@@ -1,0 +1,19 @@
+{
+  "name": "WLED",
+  "version": "0.16.0-aplha ethernet",
+  "home_assistant_domain": "wled",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "esp32_bootloader_v4.bin", "offset": 0 },
+        { "path": "https://corsproxy.io/?url=https://github.com/wled/Wled/releases/download/nightly/WLED_0.16.0-alpha_ESP32_Ethernet.bin", "offset": 65536 }
+      ]
+    },
+    {
+      "chipFamily": "ESP8266",
+      "parts": [{ "path": "https://corsproxy.io/?url=https://github.com/wled/Wled/releases/download/nightly/WLED_0.16.0-alpha_ESP8266.bin", "offset": 0 }]
+    }
+  ]
+}
