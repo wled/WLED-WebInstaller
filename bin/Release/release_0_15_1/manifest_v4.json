@@ -1,0 +1,15 @@
+{
+  "name": "WLED",
+  "version": "0.15.1/2507260 test",
+  "home_assistant_domain": "wled",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "esp32_bootloader_v4.bin", "offset": 0 },
+        { "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.1/WLED_0.15.1_ESP32_V4.bin", "offset": 65536 }
+      ]
+    }
+  ]
+}

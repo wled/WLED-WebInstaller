@@ -34,6 +34,7 @@
       <option data-manifest="bin/Release/release_0_15_1/manifest.json"
         data-ethernet="bin/Release/release_0_15_1/manifest_e.json"
         data-test = "bin/Release/release_0_15_1/manifest_t.json"
+        data-v4 = "bin/Release/release_0_15_1/manifest_v4.json"
         >0.15.1</option>
       <option data-manifest="bin/Release/release_0_15_0/manifest.json"
         data-ethernet="bin/Release/release_0_15_0/manifest_e.json"
@@ -54,6 +55,7 @@
       <option data-manifest="bin/nightly/manifest.json"
         data-ethernet="bin/nightly/manifest_e.json"
         data-test = "bin/nightly/manifest_t.json"
+        data-v4 = "bin/nightly/manifest_v4.json"
         >0.16.0 Nightly </option>
       </optgroup>
   </select><br>
@@ -67,6 +69,8 @@
     <label class="radio__label" for="ethernet" id="ethernet_label">Ethernet</label>
     <input class="radio__input" type="radio" value="test" name="version" id="test">
     <label class="radio__label" for="test" id="test_label">ESP8266 CPU Frequency Test</label>
+    <input class="radio__input" type="radio" value="v4" name="version" id="v4">
+    <label class="radio__label" for="v4" id="v4_label">ESP32 V4</label>
   </div>
     <br>
     <div class="container inst-button">
@@ -76,11 +80,10 @@
       >
         <button class="btn" slot="activate">Install</button>
       </esp-web-install-button><br>
-<br> If you get download or fetching errors, or error code 403 when using the webinstaller, please try this <a href="https://lost-hope.github.io/WLED-WebInstaller/">alternative version.</a> <br>
-		It requires to use a browser plugin like "CORS unblock". Otherwise it would fail. 
 		
 </div>
 <br></brY><br>Powered by <a href="https://esphome.github.io/esp-web-tools/" target="_blank">ESP Web Tools</a><br>
+CORS proxy by <a href="https://corsfix.com" target="_blank">Corsfix</a><br>
 <br><a href="https://github.com/Aircoookie/WLED" target="_blank">GitHub</a>&emsp;<a href="https://kno.wled.ge" target="_blank">kno.wled.ge</a>
 
 <script
