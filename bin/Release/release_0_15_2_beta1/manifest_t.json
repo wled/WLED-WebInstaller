@@ -1,0 +1,12 @@
+{
+  "name": "WLED",
+  "version": "0.15.2-beta1/2412100 test",
+  "home_assistant_domain": "wled",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP8266",
+      "parts": [{ "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/v0.15.2-beta1/WLED_0.15.2-beta1_ESP8266_160.bin", "offset": 0 }]
+    }
+  ]
+}
