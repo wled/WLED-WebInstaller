@@ -47,9 +47,12 @@ function handleCheckbox(manifest, checkboxmanifest, primaryCheckbox) {
 function resetCheckboxes() {
     const checkBoxIds = ['ethernet', 'audio', 'test', 'v4', 'debug'];
     checkBoxIds.forEach(id => {
-        document.getElementById(id).checked = false;
-        document.getElementById(id).disabled = false;
-    }); 
+        const checkbox = document.getElementById(id);
+        if (checkbox) {
+            checkbox.checked = false;
+            checkbox.disabled = false;
+        }
+    });
 }
 
 function checkSupported() {
