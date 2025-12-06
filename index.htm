@@ -25,11 +25,28 @@
 <div class="main">
 <h2>Welcome to the WLED web installer!</h2>
 
+<div id="unsupported" hidden>
+  Sorry, your browser is not yet supported!<br>
+  Please try on Desktop Chrome or Edge.<br>
+  Find binary files here:<br>
+  <a href="https://github.com/Aircoookie/WLED/releases" target="_blank">
+    <button class="btn" slot="activate">GitHub Releases</button>
+  </a>
+</div>
+
 <div id="flasher">
 
 <ol>
   <li>Plug in your ESP to a USB port. We will install WLED <span id="verstr">0.12.0</span> to it.</li>
-  <li id="coms">Hit "Install" and select the correct COM port. <a onclick="showSerialHelp()">No device found?</a></li>
+  <li id="coms">Hit "Install" and select the correct COM port. 
+    <a id="showSerialHelp" onclick="showSerialHelp()">No device found?</a>
+    <p id="serialHelp" hidden>You might be missing the drivers for your board.<br>
+    Here are drivers for chips commonly used in ESP boards:<br>
+    <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank">CP2102 (square chip)</a><br>
+    <a href="https://github.com/nodemcu/nodemcu-devkit/tree/master/Drivers" target="_blank">CH34x (rectangular chip)</a><br><br>
+    Make sure your USB cable supports data transfer.<br><br></p>
+  </li>
+  
   <li>Get WLED installed and connected in less than 3 minutes!</li>
 </ol><br><br>
 
