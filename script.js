@@ -63,8 +63,8 @@ function checkSupported() {
 }
 
 function unsupported() {
-    document.getElementById("flasher").hidden = true;
-    document.getElementById("unsupported").hidden = false;
+    document.getElementById('flasher').hidden = true;
+    document.getElementById('unsupported').hidden = false;
 }
 
 function showSerialHelp() {
