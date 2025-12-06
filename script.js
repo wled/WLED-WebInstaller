@@ -45,16 +45,11 @@ function handleCheckbox(manifest, checkboxmanifest, primaryCheckbox) {
 }
 
 function resetCheckboxes() {
-    document.getElementById('ethernet').checked = false;
-    document.getElementById('ethernet').disabled = false;
-    document.getElementById('audio').checked = false;
-    document.getElementById('audio').disabled = false;
-    document.getElementById('test').checked = false;
-    document.getElementById('test').disabled = false;
-    document.getElementById('v4').checked = false;
-    document.getElementById('v4').disabled = false;
-    document.getElementById('debug').checked = false;
-    document.getElementById('debug').disabled = false;
+    const checkBoxIds = ['ethernet', 'audio', 'test', 'v4', 'debug'];
+    checkBoxIds.forEach(id => {
+        document.getElementById(id).checked = false;
+        document.getElementById(id).disabled = false;
+    }); 
 }
 
 function checkSupported() {
