@@ -63,6 +63,6 @@ function unsupported() {
 }
 
 function showSerialHelp() {
-    document.getElementById("showSerialHelp").hidden = true;
-    document.getElementById("serialHelp").hidden = false;
+    document.getElementById('showSerialHelp').hidden = true;
+    document.getElementById('serialHelp').hidden = false;
 }
