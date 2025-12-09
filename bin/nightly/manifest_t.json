@@ -13,7 +13,7 @@
     },
     {
       "chipFamily": "ESP8266",
-      "parts": [{ "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/nightly/WLED_0.16.0-alpha_ESP8266_160.bin", "offset": 0 }]
+      "parts": [{ "path": "https://download.wled.me/wled/wled/releases/download/nightly/WLED_0.16.0-alpha_ESP8266_160.bin", "offset": 0 }]
     }
   ]
 }
