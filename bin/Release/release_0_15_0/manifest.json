@@ -6,36 +6,71 @@
     {
       "chipFamily": "ESP32",
       "parts": [
-        { "path": "esp32_bootloader_v4.bin", "offset": 0 },
-        { "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP32.bin", "offset": 65536 }
+        {
+          "path": "esp32_bootloader_v4.bin",
+          "offset": 0
+        },
+        {
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP32.bin",
+          "offset": 65536
+        }
       ]
     },
     {
       "chipFamily": "ESP32-C3",
       "parts": [
-        { "path": "esp32-c3_bootloader_v2.bin", "offset": 0 },
-        { "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP32-C3.bin", "offset": 65536 }
+        {
+          "path": "esp32-c3_bootloader_v2.bin",
+          "offset": 0
+        },
+        {
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP32-C3.bin",
+          "offset": 65536
+        }
       ]
     },
     {
       "chipFamily": "ESP32-S2",
       "parts": [
-        { "path": "bootloader_s2.bin", "offset": 0 },
-        { "path": "partitions_s2_4m.bin", "offset": 32.768 },
-        { "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP32-S2.bin", "offset": 65536 }
+        {
+          "path": "bootloader_s2.bin",
+          "offset": 4096
+        },
+        {
+          "path": "partitions_s2_4m.bin",
+          "offset": 32768
+        },
+        {
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP32-S2.bin",
+          "offset": 65536
+        }
       ]
     },
     {
       "chipFamily": "ESP32-S3",
       "parts": [
-        { "path": "bootloader_s3.bin", "offset": 0 },
-        { "path": "partitions_s3_8m.bin", "offset": 32.768 },
-        { "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP32-S3_4M_qspi.bin", "offset": 65536 }
+        {
+          "path": "bootloader_s3.bin",
+          "offset": 0
+        },
+        {
+          "path": "partitions_s3_8m.bin",
+          "offset": 32768
+        },
+        {
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP32-S3_4M_qspi.bin",
+          "offset": 65536
+        }
       ]
     },
     {
       "chipFamily": "ESP8266",
-      "parts": [{ "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP8266.bin", "offset": 0 }]
+      "parts": [
+        {
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/v0.15.0/WLED_0.15.0_ESP8266.bin",
+          "offset": 0
+        }
+      ]
     }
   ]
 }
