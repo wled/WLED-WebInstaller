@@ -60,7 +60,7 @@ function i18n() {
 
     document.querySelectorAll('[data-i18n]').forEach(function (elem) {
         const key = elem.getAttribute('data-i18n');
-        const translation = messages[key];
+        const translation = messages[key] || (i18n_messages['en'] && i18n_messages['en'][key]);
         if (translation) {
             elem.textContent = translation;
         }
