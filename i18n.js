@@ -71,12 +71,12 @@ function i18n() {
 // Initialize i18n on page load
 function i18nInit() {
     // Get saved language from localStorage
-    let savedLang = localStorage.getItem('Language');
+    let savedLang = localStorage.getItem('wled-webinstaller:language');
 
     // If no saved language or not in the list of supported languages, set default to English
     if (!savedLang || !i18n_messages[savedLang]) {
         savedLang = 'en';
-        localStorage.setItem('Language', savedLang);
+        localStorage.setItem('wled-webinstaller:language', savedLang);
     }
 
     // Set the select element to the saved language
