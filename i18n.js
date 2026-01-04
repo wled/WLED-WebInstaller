@@ -90,6 +90,6 @@ function i18nInit() {
 // Event for language selection change
 function changeLanguage() {
     let selectedLang = document.getElementById('languageSelect').value;
-    localStorage.setItem('Language', selectedLang);
+    localStorage.setItem('wled-webinstaller:language', selectedLang);
     i18n();
 }
