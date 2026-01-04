@@ -55,9 +55,12 @@ const i18n_messages = {
 
 // Function to update text content based on selected language
 function i18n() {
+    const lang = document.getElementById('languageSelect').value;
+    const messages = i18n_messages[lang] || i18n_messages['en']; // Fallback to English
+
     document.querySelectorAll('[data-i18n]').forEach(function (elem) {
         const key = elem.getAttribute('data-i18n');
-        const translation = i18n_messages[document.querySelector('select').value][key];
+        const translation = messages[key];
         if (translation) {
             elem.textContent = translation;
         }
