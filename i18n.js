@@ -22,9 +22,9 @@ const i18n_messages = {
         "step3": "Get WLED installed and connected in less than 3 minutes!",
         "install": "Install",
         "powered1": "Powered by ",
-        "powered2": "",
+        "powered2": " ",
         "cors1": "CORS proxy by ",
-        "cors2": ""
+        "cors2": " "
     },
     "zh-CN": {
         "maintenance1": "网络安装程序正在维护中",
@@ -58,7 +58,7 @@ function i18n() {
     const lang = document.getElementById('languageSelect').value;
     const messages = i18n_messages[lang] || i18n_messages['en']; // Fallback to English
 
-    document.querySelectorAll('[data-i18n]').forEach(function (elem) {
+    document.querySelectorAll('[data-i18n]').forEach((elem) => {
         const key = elem.getAttribute('data-i18n');
         const translation = messages[key] || (i18n_messages['en'] && i18n_messages['en'][key]);
         if (translation) {
