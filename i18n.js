@@ -75,11 +75,12 @@ function i18nInit() {
 
     // If no saved language or not in the list of supported languages, set default to English
     if (!savedLang || !i18n_messages[savedLang]) {
-        localStorage.setItem('Language', 'en');
+        savedLang = 'en';
+        localStorage.setItem('Language', savedLang);
     }
 
     // Set the select element to the saved language
-    document.getElementById('languageSelect').value = localStorage.getItem('Language');
+    document.getElementById('languageSelect').value = savedLang;
 
     // Apply translations
     i18n();
