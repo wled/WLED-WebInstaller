@@ -24,7 +24,6 @@ function setManifest() {
 }
 
 
-
 function handleCheckbox(manifest, checkboxmanifest, primaryCheckbox) {
     //Check if specified manifest is available
 
@@ -44,6 +43,7 @@ function handleCheckbox(manifest, checkboxmanifest, primaryCheckbox) {
     return manifest;
 }
 
+
 function resetCheckboxes() {
     const checkBoxIds = ['ethernet', 'audio', 'test', 'v4', 'debug'];
     checkBoxIds.forEach(id => {
@@ -55,15 +55,18 @@ function resetCheckboxes() {
     });
 }
 
+
 function checkSupported() {
     if (document.getElementById('inst').hasAttribute('install-unsupported')) unsupported();
     else setManifest();
 }
 
+
 function unsupported() {
     document.getElementById('flasher').hidden = true;
     document.getElementById('unsupported').hidden = false;
 }
+
 
 function showSerialHelp() {
     document.getElementById('showSerialHelp').hidden = true;
