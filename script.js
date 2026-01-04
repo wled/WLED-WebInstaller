@@ -45,16 +45,14 @@ function handleCheckbox(manifest, checkboxmanifest, primaryCheckbox) {
 }
 
 function resetCheckboxes() {
-    document.getElementById('ethernet').checked = false;
-    document.getElementById('ethernet').disabled = false;
-    document.getElementById('audio').checked = false;
-    document.getElementById('audio').disabled = false;
-    document.getElementById('test').checked = false;
-    document.getElementById('test').disabled = false;
-    document.getElementById('v4').checked = false;
-    document.getElementById('v4').disabled = false;
-    document.getElementById('debug').checked = false;
-    document.getElementById('debug').disabled = false;
+    const checkBoxIds = ['ethernet', 'audio', 'test', 'v4', 'debug'];
+    checkBoxIds.forEach(id => {
+        const checkbox = document.getElementById(id);
+        if (checkbox) {
+            checkbox.checked = false;
+            checkbox.disabled = false;
+        }
+    });
 }
 
 function checkSupported() {
@@ -63,20 +61,11 @@ function checkSupported() {
 }
 
 function unsupported() {
-    document.getElementById('flasher').innerHTML = `Sorry, your browser is not yet supported!<br>
-    Please try on Desktop Chrome or Edge.<br>
-    Find binary files here:<br>
-    <a href="https://github.com/Aircoookie/WLED/releases" target="_blank">
-    <button class="btn" slot="activate">GitHub Releases</button>
-    </a>`
+    document.getElementById('flasher').hidden = true;
+    document.getElementById('unsupported').hidden = false;
 }
 
 function showSerialHelp() {
-    document.getElementById('coms').innerHTML = `Hit "Install" and select the correct COM port.<br><br>
-    You might be missing the drivers for your board.<br>
-    Here are drivers for chips commonly used in ESP boards:<br>
-    <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank">CP2102 (square chip)</a><br>
-    <a href="https://github.com/nodemcu/nodemcu-devkit/tree/master/Drivers" target="_blank">CH34x (rectangular chip)</a><br><br>
-    Make sure your USB cable supports data transfer.<br><br>
-    `;
+    document.getElementById('showSerialHelp').hidden = true;
+    document.getElementById('serialHelp').hidden = false;
 }

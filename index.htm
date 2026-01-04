@@ -15,9 +15,8 @@
 </head>
 <body onload="checkSupported()">
   <div id="overlay">
-  <div id="text"><font size="7">
-    <b>Web Installer under maintenance</b>
-    </font>
+  <div id="text">
+    <h1>Web Installer under maintenance</h1>
     <br> The WLED web installer is currently out of service due to maintenance work and will be back online shortly.
     <br><br> In the meantime, you can use the webinstaller provided by Wladi: <a href="https://wled-install.github.io/">https://wled-install.github.io/</a>
   </div>
@@ -26,11 +25,30 @@
 <div class="main">
 <h2>Welcome to the WLED web installer!</h2>
 
+<div id="unsupported" hidden>
+  Sorry, your browser is not yet supported!<br>
+  Please try on Desktop Chrome or Edge.<br>
+  Find binary files here:<br>
+  <a href="https://github.com/Aircoookie/WLED/releases" target="_blank">
+    <button class="btn" slot="activate">GitHub Releases</button>
+  </a>
+</div>
+
 <div id="flasher">
 
 <ol>
   <li>Plug in your ESP to a USB port. We will install WLED <span id="verstr">0.12.0</span> to it.</li>
-  <li id="coms">Hit "Install" and select the correct COM port. <a onclick="showSerialHelp()">No device found?</a></li>
+  <li id="coms">Hit "Install" and select the correct COM port. 
+    <a id="showSerialHelp" onclick="showSerialHelp()">No device found?</a>
+    <p id="serialHelp" hidden>
+      You might be missing the drivers for your board.<br>
+      Here are drivers for chips commonly used in ESP boards:<br>
+      <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank">CP2102 (square chip)</a><br>
+      <a href="https://github.com/nodemcu/nodemcu-devkit/tree/master/Drivers" target="_blank">CH34x (rectangular chip)</a><br><br>
+      Make sure your USB cable supports data transfer.<br><br>
+    </p>
+  </li>
+  
   <li>Get WLED installed and connected in less than 3 minutes!</li>
 </ol><br><br>
 
@@ -96,23 +114,17 @@
     <input class="radio__input" type="radio" value="debug" name="version" id="debug">
     <label class="radio__label" for="debug" id="debug_label">DEBUG</label>
   </div>
-    <br>
-    <div class="container inst-button">
-      <esp-web-install-button
-        id="inst"
-        manifest=""
-      >
-        <button class="btn" slot="activate">Install</button>
-      </esp-web-install-button><br>
-		
-</div>
-<br></brY><br>Powered by <a href="https://esphome.github.io/esp-web-tools/" target="_blank">ESP Web Tools</a><br>
+  <br>
+  <div class="container inst-button">
+    <esp-web-install-button id="inst" manifest="">
+      <button class="btn" slot="activate">Install</button>
+    </esp-web-install-button><br>
+  </div>
+
+<br><br>Powered by <a href="https://esphome.github.io/esp-web-tools/" target="_blank">ESP Web Tools</a><br>
 CORS proxy by <a href="https://corsfix.com" target="_blank">Corsfix</a><br>
 <br><a href="https://github.com/Aircoookie/WLED" target="_blank">GitHub</a>&emsp;<a href="https://kno.wled.ge" target="_blank">kno.wled.ge</a>
 
-<script
-  type = "text/javascript"
-  src="script.js"
-></script>
+<script src="script.js"></script>
 </body>
 </html>
