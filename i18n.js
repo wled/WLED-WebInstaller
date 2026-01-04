@@ -22,9 +22,9 @@ const i18n_messages = {
         "step3": "Get WLED installed and connected in less than 3 minutes!",
         "install": "Install",
         "powered1": "Powered by ",
-        "powered2": " ",
+        "powered2": "",
         "cors1": "CORS proxy by ",
-        "cors2": " "
+        "cors2": ""
     },
     "zh-CN": {
         "maintenance1": "网络安装程序正在维护中",
