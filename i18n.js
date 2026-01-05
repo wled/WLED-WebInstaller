@@ -22,9 +22,9 @@ const i18n_messages = {
         "step3": "Get WLED installed and connected in less than 3 minutes!",
         "install": "Install",
         "powered1": "Powered by ",
-        "powered2": " ",
+        "powered2": "",
         "cors1": "CORS proxy by ",
-        "cors2": " "
+        "cors2": ""
     },
     "zh-CN": {
         "maintenance1": "网络安装程序正在维护中",
@@ -45,7 +45,7 @@ const i18n_messages = {
         "chip2": "CH34x（长方形芯片）",
         "step3": "在不到 3 分钟的时间内安装并连接 WLED！",
         "install": "安装",
-        "powered1": " ",
+        "powered1": "",
         "powered2": " 强力驱动",
         "cors1": "CORS 代理由 ",
         "cors2": " 提供支持"
@@ -60,8 +60,8 @@ function i18n() {
 
     document.querySelectorAll('[data-i18n]').forEach((elem) => {
         const key = elem.getAttribute('data-i18n');
-        const translation = messages[key] || (i18n_messages['en'] && i18n_messages['en'][key]);
-        if (translation) {
+        const translation = messages[key] || i18n_messages['en'][key];
+        if (translation || translation === "") {
             elem.textContent = translation;
         }
     });
