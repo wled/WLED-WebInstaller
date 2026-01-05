@@ -72,11 +72,11 @@ const i18n_messages = {
 function i18n() {
     const lang = document.getElementById('languageSelect').value;
     document.documentElement.lang = lang; // Set the lang attribute of the HTML document
-    const messages = i18n_messages[lang] || i18n_messages['en']; // Fallback to English
+    const messages = i18n_messages[lang] || i18n_messages['en']; // Fallback to English if language not found
 
     document.querySelectorAll('[data-i18n]').forEach((elem) => {
         const key = elem.getAttribute('data-i18n');
-        messages[key] == undefined ? translation = i18n_messages['en'][key] : translation = messages[key];
+         const translation = messages[key] ?? i18n_messages['en'][key]; // Fallback to English if key not found
         elem.textContent = translation;
         
         // console.log(`i18n: ${messages[key] || i18n_messages['en'][key]} | ${key} => ${translation}`);
