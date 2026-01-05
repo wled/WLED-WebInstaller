@@ -1,130 +1,159 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
-	<meta content='width=device-width' name='viewport'>
+  <meta content='width=device-width' name='viewport'>
   <meta name="theme-color" content="#222222">
-  <link rel="shortcut icon" href="favicon.png"> 
+  <link rel="shortcut icon" href="favicon.png">
   <link rel="stylesheet" href="style.css">
-	<title>Install WLED</title>
+  <title>Install WLED</title>
   <script
     type="module"
     src="https://unpkg.com/esp-web-tools@10.1.0/dist/web/install-button.js?module"
   ></script>
   <script src="enable-threads.js"></script>
 </head>
-<body onload="checkSupported()">
+
+<body onload="checkSupported();i18nInit()">
+
+  <!-- Overlay for maintenance -->
   <div id="overlay">
-  <div id="text">
-    <h1>Web Installer under maintenance</h1>
-    <br> The WLED web installer is currently out of service due to maintenance work and will be back online shortly.
-    <br><br> In the meantime, you can use the webinstaller provided by Wladi: <a href="https://wled-install.github.io/">https://wled-install.github.io/</a>
+    <div id="text">
+      <h1 data-i18n="maintenance1">Web Installer under maintenance</h1><br>
+      <span data-i18n="maintenance2">The WLED web installer is currently out of service due to maintenance work and will be back online shortly.</span><br><br>
+      <span data-i18n="maintenance3">In the meantime, you can use the webinstaller provided by Wladi: </span>
+      <a href="https://wled-install.github.io/">https://wled-install.github.io/</a>
+    </div>
   </div>
-</div>
-<img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAAAfCAMAAADazLOuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABLUExURQAAAAB81gCU/zKq///mo7sWMN8bO+ZIYtZaAP9rAP+HMsCiG+TAIOnMS0KqNU7KPnLUZOrq6v///4CAgGhoaL+/v6CgoExMTAAAAAlm4O8AAAAZdFJOU////////////////////////////////wABNAq3AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACN0lEQVRIS73VjVLCMBAEYIr8CYKkrdj3f1J37zaXFCpTO+piaDgbPq9px9VQ0qyrvKj4q6m0Zr1h+M7xF1zRmnWzqV9/0d2jttGotO1uv9dUObwej5oqp7fzWVPl8n69aprzoOUUbbvdIbV3OLwitXc6vSG1d7m8I3feSEN0j2CeNbOY4MxigjOLCc4sZsTV2l1cCyy4wIILLLjAxtykltq2rbTU+qi01N5rXNO2leaFORoija2l5MM5a02ac9Ya16Sk5tgaPrUpjZub0BL6YqSxKwbH77XUUmSkJXSl8QtaMuyJhq5maL5nTKVpZC13VmtMpTFT2g4vJjTuGfMzzXftiUZnhdtgb1xofvypRon5TjNnxYN9zJo6K5ruSIzQtGuVZn0x91rKvdHBvm39E7SyZ4y06Gz8BDBFKzsXmhcwyfsGZ9VpbhoiCinaxPNmGWmWWrNU2jB0q6HvOhN1JUtCixQtp2g51ZVUXIPS2RMAD++T2nY/DrDjOMDO4wC7jmNYj3d73nrXug8Yt9uNB8xNU1cKNXWlUFNXCjV1pZhGTE83m2vWfYf/NGj4Bg1zu5JD3/MnH5ZWfLOksbmGWGjgXMN5/C2GXYGFFW9Nmtle6Xut0Gm+JsayCj8z0nhjGvYJzVf4aSzmNYsr+u7Q2JIdoX3YOQjOslmsW1jJ3120nE9gfo79hTaNdcsqVR610lvO47pllae9ReZ805zKo2a3iaY5c75pTmVCA6dJ5H7N0sr/asPwBehb7ifEhusRAAAAAElFTkSuQmCC">
-<div class="main">
-<h2>Welcome to the WLED web installer!</h2>
 
-<div id="unsupported" hidden>
-  Sorry, your browser is not yet supported!<br>
-  Please try on Desktop Chrome or Edge.<br>
-  Find binary files here:<br>
-  <a href="https://github.com/Aircoookie/WLED/releases" target="_blank">
-    <button class="btn" slot="activate">GitHub Releases</button>
-  </a>
-</div>
-
-<div id="flasher">
-
-<ol>
-  <li>Plug in your ESP to a USB port. We will install WLED <span id="verstr">0.12.0</span> to it.</li>
-  <li id="coms">Hit "Install" and select the correct COM port. 
-    <a id="showSerialHelp" onclick="showSerialHelp()">No device found?</a>
-    <p id="serialHelp" hidden>
-      You might be missing the drivers for your board.<br>
-      Here are drivers for chips commonly used in ESP boards:<br>
-      <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank">CP2102 (square chip)</a><br>
-      <a href="https://github.com/nodemcu/nodemcu-devkit/tree/master/Drivers" target="_blank">CH34x (rectangular chip)</a><br><br>
-      Make sure your USB cable supports data transfer.<br><br>
-    </p>
-  </li>
+  <!-- Image of WLED -->
+  <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAAAfCAMAAADazLOuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABLUExURQAAAAB81gCU/zKq///mo7sWMN8bO+ZIYtZaAP9rAP+HMsCiG+TAIOnMS0KqNU7KPnLUZOrq6v///4CAgGhoaL+/v6CgoExMTAAAAAlm4O8AAAAZdFJOU////////////////////////////////wABNAq3AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACN0lEQVRIS73VjVLCMBAEYIr8CYKkrdj3f1J37zaXFCpTO+piaDgbPq9px9VQ0qyrvKj4q6m0Zr1h+M7xF1zRmnWzqV9/0d2jttGotO1uv9dUObwej5oqp7fzWVPl8n69aprzoOUUbbvdIbV3OLwitXc6vSG1d7m8I3feSEN0j2CeNbOY4MxigjOLCc4sZsTV2l1cCyy4wIILLLjAxtykltq2rbTU+qi01N5rXNO2leaFORoija2l5MM5a02ac9Ya16Sk5tgaPrUpjZub0BL6YqSxKwbH77XUUmSkJXSl8QtaMuyJhq5maL5nTKVpZC13VmtMpTFT2g4vJjTuGfMzzXftiUZnhdtgb1xofvypRon5TjNnxYN9zJo6K5ruSIzQtGuVZn0x91rKvdHBvm39E7SyZ4y06Gz8BDBFKzsXmhcwyfsGZ9VpbhoiCinaxPNmGWmWWrNU2jB0q6HvOhN1JUtCixQtp2g51ZVUXIPS2RMAD++T2nY/DrDjOMDO4wC7jmNYj3d73nrXug8Yt9uNB8xNU1cKNXWlUFNXCjV1pZhGTE83m2vWfYf/NGj4Bg1zu5JD3/MnH5ZWfLOksbmGWGjgXMN5/C2GXYGFFW9Nmtle6Xut0Gm+JsayCj8z0nhjGvYJzVf4aSzmNYsr+u7Q2JIdoX3YOQjOslmsW1jJ3120nE9gfo79hTaNdcsqVR610lvO47pllae9ReZ805zKo2a3iaY5c75pTmVCA6dJ5H7N0sr/asPwBehb7ifEhusRAAAAAElFTkSuQmCC">
   
-  <li>Get WLED installed and connected in less than 3 minutes!</li>
-</ol><br><br>
+  <div class="main">
 
-  <!-- add new builds here -->
-  <select id="ver" class="btn" onchange="resetCheckboxes();setManifest();">
-    
-    
-    <optgroup label="Release">
-      <option data-manifest="bin/Release/release_0_15_3/manifest.json"
-        data-ethernet="bin/Release/release_0_15_3/manifest_e.json"
-        data-test = "bin/Release/release_0_15_3/manifest_t.json"
-        data-v4 = "bin/Release/release_0_15_3/manifest_v4.json"
-        >0.15.3</option>
-      <option data-manifest="bin/Release/release_0_15_1/manifest.json"
-        data-ethernet="bin/Release/release_0_15_1/manifest_e.json"
-        data-test = "bin/Release/release_0_15_1/manifest_t.json"
-        data-v4 = "bin/Release/release_0_15_1/manifest_v4.json"
-        >0.15.1</option>
-      <option data-manifest="bin/Release/release_0_15_0/manifest.json"
-        data-ethernet="bin/Release/release_0_15_0/manifest_e.json"
-        data-test = "bin/Release/release_0_15_0/manifest_t.json"
-        >0.15.0</option>
-      <option data-manifest="bin/Release/release_0_14_4/manifest.json"
-        data-ethernet="bin/Release/release_0_14_4/manifest_e.json"
-        data-audio = "bin/Release/release_0_14_4/manifest_a.json"
-        data-test = "bin/Release/release_0_14_4/manifest_t.json"
-        >0.14.4</option>
-      <option data-manifest="bin/Release/release_0_14_3/manifest.json"
-        data-ethernet="bin/Release/release_0_14_3/manifest_e.json"
-        data-audio = "bin/Release/release_0_14_3/manifest_a.json"
-        data-test = "bin/Release/release_0_14_3/manifest_t.json"
-        >0.14.3</option>
-      </optgroup>
-<!--
-	<optgroup label="Beta">
-      <option data-manifest="bin/Beta/beta_0_15_2-b1/manifest.json"
-        data-ethernet="bin/Beta/beta_0_15_2-b1/manifest_e.json"
-        data-test = "bin/Beta/beta_0_15_2-b1/manifest_t.json"
-        data-v4 = "bin/Beta/beta_0_15_2-b1/manifest_v4.json"
-        >0.15.2-beta1</option>
-      </optgroup>
--->
-      <optgroup label="Nightly">
-      <option data-manifest="bin/nightly/manifest.json"
-        data-ethernet="bin/nightly/manifest_e.json"
-        data-test = "bin/nightly/manifest_t.json"
-        data-debug = "bin/nightly/manifest_debug.json"
-        >0.16.0 Nightly </option>
-      </optgroup>
-  </select><br>
+    <!-- Language selector -->
+    <select id="languageSelect" class="btn" onchange="changeLanguage();">
+      <option value="en" selected>English</option>
+      <option value="zh-CN">简体中文</option>
+    </select>
 
-  <div class="radio" onchange="setManifest()">
-    <input class="radio__input" type="radio" value="normal" name="version" id="normal" checked>
-    <label class="radio__label" for="normal" id="normal_label">Plain</label>
-    <input class="radio__input" type="radio" value="audio" name="version" id="audio">
-    <label class="radio__label" for="audio" id="audio_label">Audioreactive</label>
-    <input class="radio__input" type="radio" value="ethernet" name="version" id="ethernet">
-    <label class="radio__label" for="ethernet" id="ethernet_label">Ethernet</label>
-    <input class="radio__input" type="radio" value="test" name="version" id="test">
-    <label class="radio__label" for="test" id="test_label">ESP8266 CPU Frequency Test</label>
-    <input class="radio__input" type="radio" value="v4" name="version" id="v4">
-    <label class="radio__label" for="v4" id="v4_label">ESP32 V4</label>
-    <input class="radio__input" type="radio" value="debug" name="version" id="debug">
-    <label class="radio__label" for="debug" id="debug_label">DEBUG</label>
-  </div>
-  <br>
-  <div class="container inst-button">
-    <esp-web-install-button id="inst" manifest="">
-      <button class="btn" slot="activate">Install</button>
-    </esp-web-install-button><br>
-  </div>
+    <h2 data-i18n="welcome">Welcome to the WLED web installer!</h2>
+    <div id="unsupported" hidden>
+      <span data-i18n="unsupported1">Sorry, your browser is not yet supported!</span><br>
+      <span data-i18n="unsupported2">Please try on Desktop Chrome or Edge.</span><br>
+      <span data-i18n="unsupported3">Find binary files here:</span><br>
+      <a href="https://github.com/Aircoookie/WLED/releases" target="_blank">
+        <button class="btn" slot="activate">GitHub Releases</button>
+      </a>
+    </div>
 
-<br><br>Powered by <a href="https://esphome.github.io/esp-web-tools/" target="_blank">ESP Web Tools</a><br>
-CORS proxy by <a href="https://corsfix.com" target="_blank">Corsfix</a><br>
-<br><a href="https://github.com/Aircoookie/WLED" target="_blank">GitHub</a>&emsp;<a href="https://kno.wled.ge" target="_blank">kno.wled.ge</a>
+    <div id="flasher">
+      <ol>
+        <li>
+          <span data-i18n="step1-1">Plug in your ESP to a USB port. We will install WLED </span>
+          <span id="verstr">0.12.0</span>
+          <span data-i18n="step1-2"> to it.</span>
+        </li>
+        <li id="coms">
+          <span data-i18n="step2">Hit "Install" and select the correct COM port.</span>
+          <a id="showSerialHelp" onclick="showSerialHelp()" data-i18n="noDeviceFound">No device found?</a>
+          <p id="serialHelp" hidden>
+            <span data-i18n="serialHelp1">You might be missing the drivers for your board.</span><br>
+            <span data-i18n="serialHelp2">Here are drivers for chips commonly used in ESP boards:</span><br>
+            <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank" data-i18n="chip1">CP2102 (square chip)</a><br>
+            <a href="https://github.com/nodemcu/nodemcu-devkit/tree/master/Drivers" target="_blank" data-i18n="chip2">CH34x (rectangular chip)</a><br><br>
+            <span data-i18n="serialHelp3">Make sure your USB cable supports data transfer.</span><br><br>
+          </p>
+        </li>
 
-<script src="script.js"></script>
+        <li data-i18n="step3">Get WLED installed and connected in less than 3 minutes!</li>
+      </ol>
+      <br><br>
+
+      <!-- add new builds here -->
+      <select id="ver" class="btn" onchange="resetCheckboxes();setManifest();">
+
+        
+        <optgroup label="Release">
+          <option data-manifest="bin/Release/release_0_15_3/manifest.json"
+            data-ethernet="bin/Release/release_0_15_3/manifest_e.json"
+            data-test = "bin/Release/release_0_15_3/manifest_t.json"
+            data-v4 = "bin/Release/release_0_15_3/manifest_v4.json"
+            >0.15.3</option>
+          <option data-manifest="bin/Release/release_0_15_1/manifest.json"
+            data-ethernet="bin/Release/release_0_15_1/manifest_e.json"
+            data-test = "bin/Release/release_0_15_1/manifest_t.json"
+            data-v4 = "bin/Release/release_0_15_1/manifest_v4.json"
+            >0.15.1</option>
+          <option data-manifest="bin/Release/release_0_15_0/manifest.json"
+            data-ethernet="bin/Release/release_0_15_0/manifest_e.json"
+            data-test = "bin/Release/release_0_15_0/manifest_t.json"
+            >0.15.0</option>
+          <option data-manifest="bin/Release/release_0_14_4/manifest.json"
+            data-ethernet="bin/Release/release_0_14_4/manifest_e.json"
+            data-audio = "bin/Release/release_0_14_4/manifest_a.json"
+            data-test = "bin/Release/release_0_14_4/manifest_t.json"
+            >0.14.4</option>
+          <option data-manifest="bin/Release/release_0_14_3/manifest.json"
+            data-ethernet="bin/Release/release_0_14_3/manifest_e.json"
+            data-audio = "bin/Release/release_0_14_3/manifest_a.json"
+            data-test = "bin/Release/release_0_14_3/manifest_t.json"
+            >0.14.3</option>
+        </optgroup>
+        <!--         
+	      <optgroup label="Beta">
+            <option data-manifest="bin/Beta/beta_0_15_2-b1/manifest.json"
+            data-ethernet="bin/Beta/beta_0_15_2-b1/manifest_e.json"
+            data-test = "bin/Beta/beta_0_15_2-b1/manifest_t.json"
+            data-v4 = "bin/Beta/beta_0_15_2-b1/manifest_v4.json"
+            >0.15.2-beta1</option>
+        </optgroup>
+        -->
+        <optgroup label="Nightly">
+          <option data-manifest="bin/nightly/manifest.json"
+            data-ethernet="bin/nightly/manifest_e.json"
+            data-test = "bin/nightly/manifest_t.json"
+            data-debug = "bin/nightly/manifest_debug.json"
+            >0.16.0 Nightly </option>
+        </optgroup>
+      </select><br>
+
+      <div class="radio" onchange="setManifest()">
+        <input class="radio__input" type="radio" value="normal" name="version" id="normal" checked>
+        <label class="radio__label" for="normal" id="normal_label" data-i18n="plain">Plain</label>
+        <input class="radio__input" type="radio" value="audio" name="version" id="audio">
+        <label class="radio__label" for="audio" id="audio_label" data-i18n="audioReactive">Audioreactive</label>
+        <input class="radio__input" type="radio" value="ethernet" name="version" id="ethernet">
+        <label class="radio__label" for="ethernet" id="ethernet_label" data-i18n="ethernet">Ethernet</label>
+        <input class="radio__input" type="radio" value="test" name="version" id="test">
+        <label class="radio__label" for="test" id="test_label" data-i18n="esp8266Test">ESP8266 CPU Frequency Test</label>
+        <input class="radio__input" type="radio" value="v4" name="version" id="v4">
+        <label class="radio__label" for="v4" id="v4_label" data-i18n="esp32V4">ESP32 V4</label>
+        <input class="radio__input" type="radio" value="debug" name="version" id="debug">
+        <label class="radio__label" for="debug" id="debug_label" data-i18n="debug">DEBUG</label>
+      </div>
+      <br>
+
+      <div class="container inst-button">
+        <esp-web-install-button id="inst" manifest="">
+          <button class="btn" slot="activate" data-i18n="install">Install</button>
+        </esp-web-install-button><br>
+      </div>
+
+      <br><br>
+      <span data-i18n="powered1">Powered by </span>
+      <a href="https://esphome.github.io/esp-web-tools/" target="_blank">ESP Web Tools</a>
+      <span data-i18n="powered2"></span><br>
+
+      <span data-i18n="cors1">CORS proxy by </span>
+      <a href="https://corsfix.com" target="_blank">Corsfix</a>
+      <span data-i18n="cors2"></span><br>
+
+      <br><a href="https://github.com/Aircoookie/WLED" target="_blank">GitHub</a>&emsp;<a href="https://kno.wled.ge"target="_blank">kno.wled.ge</a>
+
+      <script src="script.js"></script>
+      <script src="i18n.js"></script>
 </body>
+
 </html>
