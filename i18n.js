@@ -1,5 +1,8 @@
 // i18n.js - Internationalization for WLED Web Installer
 
+const I18N_LANG_STORAGE_KEY = 'wled-webinstaller:language';
+
+
 // Translation messages
 const i18n_messages = {
     "en": {
@@ -68,6 +71,7 @@ const i18n_messages = {
 // Function to update text content based on selected language
 function i18n() {
     const lang = document.getElementById('languageSelect').value;
+    document.documentElement.lang = lang; // Set the lang attribute of the HTML document
     const messages = i18n_messages[lang] || i18n_messages['en']; // Fallback to English
 
     document.querySelectorAll('[data-i18n]').forEach((elem) => {
@@ -83,12 +87,12 @@ function i18n() {
 // Initialize i18n on page load
 function i18nInit() {
     // Get saved language from localStorage
-    let savedLang = localStorage.getItem('wled-webinstaller:language');
+    let savedLang = localStorage.getItem(I18N_LANG_STORAGE_KEY);
 
     // If no saved language or not in the list of supported languages, set default to English
     if (!savedLang || !i18n_messages[savedLang]) {
         savedLang = 'en';
-        localStorage.setItem('wled-webinstaller:language', savedLang);
+        localStorage.setItem(I18N_LANG_STORAGE_KEY, savedLang);
     }
 
     // Set the select element to the saved language
@@ -102,6 +106,6 @@ function i18nInit() {
 // Event for language selection change
 function changeLanguage() {
     const selectedLang = document.getElementById('languageSelect').value;
-    localStorage.setItem('wled-webinstaller:language', selectedLang);
+    localStorage.setItem(I18N_LANG_STORAGE_KEY, selectedLang);
     i18n();
 }
