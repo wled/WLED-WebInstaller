@@ -76,10 +76,10 @@ function i18n() {
 
     document.querySelectorAll('[data-i18n]').forEach((elem) => {
         const key = elem.getAttribute('data-i18n');
-        const translation = messages[key] || i18n_messages['en'][key];
-        if (translation || translation === "") {
-            elem.textContent = translation;
-        }
+        messages[key] == undefined ? translation = i18n_messages['en'][key] : translation = messages[key];
+        elem.textContent = translation;
+        
+        // console.log(`i18n: ${messages[key] || i18n_messages['en'][key]} | ${key} => ${translation}`);
     });
 }
 
