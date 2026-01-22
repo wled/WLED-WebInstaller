@@ -6,6 +6,28 @@ body {
     color: #fff;
 }
 
+.language-selector-container {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 100;
+}
+
+.language-label {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.language-select {
+    width: 150px !important;
+    margin: 0 !important;
+    background-position: 126px 17px !important;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
