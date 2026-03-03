@@ -1,0 +1,12 @@
+{
+    "en": {
+        "code": "en",
+        "name": "English",
+        "nativeName": "English"
+    },
+    "zh-CN": {
+        "code": "zh-CN",
+        "name": "Chinese (Simplified)",
+        "nativeName": "简体中文"
+    }
+}
