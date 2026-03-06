@@ -1,6 +1,6 @@
 {
   "name": "WLED",
-  "version": "0.16.0-aplha",
+  "version": "0.16.0.0-aplha",
   "home_assistant_domain": "wled",
   "new_install_prompt_erase": true,
   "builds": [
@@ -12,7 +12,7 @@
           "offset": 0
         },
         {
-          "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/nightly/WLED_16.0-alpha_ESP32.bin",
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/WLED/releases/download/nightly/WLED_16.0.0-alpha_ESP32.bin",
           "offset": 65536
         }
       ]
@@ -33,7 +33,7 @@
           "offset": 57344
         },
         {
-          "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/nightly/WLED_16.0-alpha_ESP32-C3.bin",
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/nightly/WLED_16.0.0-alpha_ESP32-C3.bin",
           "offset": 65536
         }
       ]
@@ -46,7 +46,7 @@
           "offset": 4096
         },
         {
-          "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/nightly/WLED_16.0-alpha_ESP32-S2.bin",
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/nightly/WLED_16.0.0-alpha_ESP32-S2.bin",
           "offset": 65536
         }
       ]
@@ -59,7 +59,7 @@
           "offset": 0
         },
         {
-          "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/nightly/WLED_16.0-alpha_ESP32-S3_4M_qspi.bin",
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/nightly/WLED_16.0.0-alpha_ESP32-S3_4M_qspi.bin",
           "offset": 65536
         }
       ]
@@ -68,7 +68,7 @@
       "chipFamily": "ESP8266",
       "parts": [
         {
-          "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/nightly/WLED_16.0-alpha_ESP8266.bin",
+          "path": "https://proxy.corsfix.com/?https://github.com/wled/Wled/releases/download/nightly/WLED_16.0.0-alpha_ESP8266.bin",
           "offset": 0
         }
       ]
