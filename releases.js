@@ -304,7 +304,9 @@
       if (!raw) return null;
       const data = JSON.parse(raw);
       if (Date.now() - data.timestamp < CACHE_TTL) return data.releases;
-    } catch (_) { /* ignore */ }
+    } catch (e) {
+      console.warn('Failed to read releases cache:', e);
+    }
     return null;
   }
 
@@ -314,12 +316,24 @@
         timestamp: Date.now(),
         releases: releases
       }));
-    } catch (_) { /* ignore – quota exceeded, private mode, etc. */ }
+    } catch (e) {
+      console.warn('Failed to write releases cache:', e);
+    }
   }
 
   // ---------------------------------------------------------------------------
   // Entry point
   // ---------------------------------------------------------------------------
+
+  /**
+   * Safely call resetCheckboxes() and setManifest() from script.js.
+   * These are defined in script.js which loads before releases.js, but we add
+   * defensive checks for robustness.
+   */
+  function applySelection() {
+    if (typeof resetCheckboxes === 'function') resetCheckboxes();
+    if (typeof setManifest === 'function') setManifest();
+  }
 
   /**
    * Fetch releases and populate the dropdown.  On failure the existing static
@@ -330,8 +344,7 @@
     const cached = getCachedReleases();
     if (cached) {
       populateDropdown(cached);
-      resetCheckboxes();
-      setManifest();
+      applySelection();
       return;
     }
 
@@ -343,8 +356,7 @@
       .then(function (releases) {
         cacheReleases(releases);
         populateDropdown(releases);
-        resetCheckboxes();
-        setManifest();
+        applySelection();
       })
       .catch(function (err) {
         console.warn('Failed to load releases from GitHub API – using static fallback.', err);
