@@ -17,6 +17,16 @@
 
   const GITHUB_RELEASES_URL = 'https://api.github.com/repos/wled/WLED/releases';
   const CORS_PROXY = 'https://proxy.corsfix.com/?';
+
+  // On install.wled.me we must proxy GitHub download URLs through CORS proxy.
+  // On any other host (e.g. download.wled.me mirror) we can fetch directly by
+  // replacing the github.com hostname with the local mirror.
+  function resolveAssetUrl(asset) {
+    if (window.location.hostname === 'install.wled.me') {
+      return CORS_PROXY + asset.browser_download_url;
+    }
+    return asset.browser_download_url.replace('https://github.com', 'https://download.wled.me');
+  }
   const CACHE_KEY = 'wled_releases_cache';
   const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
   const MAX_STABLE_RELEASES = 8;   // limit dropdown length
@@ -207,7 +217,7 @@
       });
 
       parts.push({
-        path: CORS_PROXY + asset.browser_download_url,
+        path: resolveAssetUrl(asset),
         offset: config.firmwareOffset
       });
 
