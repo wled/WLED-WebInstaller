@@ -17,6 +17,16 @@
 
   const GITHUB_RELEASES_URL = 'https://api.github.com/repos/wled/WLED/releases';
   const CORS_PROXY = 'https://proxy.corsfix.com/?';
+
+  // On install.wled.me we must proxy GitHub download URLs through CORS proxy.
+  // On any other host (e.g. download.wled.me mirror) we can fetch directly by
+  // replacing the github.com hostname with the local mirror.
+  function resolveAssetUrl(asset) {
+    if (window.location.hostname === 'install.wled.me') {
+      return CORS_PROXY + asset.browser_download_url;
+    }
+    return asset.browser_download_url.replace('https://github.com', 'https://download.wled.me');
+  }
   const CACHE_KEY = 'wled_releases_cache';
   const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
   const MAX_STABLE_RELEASES = 8;   // limit dropdown length
@@ -55,11 +65,32 @@
       ],
       firmwareOffset: 65536
     },
-    'ESP32-S3': {
+    // ESP32-S3 comes in multiple flash sizes; each entry adds a flashSizeMB field
+    // so the Jason2866 fork of esp-web-tools can select the right build automatically.
+    'ESP32-S3-4M': {
       chipFamily: 'ESP32-S3',
+      flashSizeMB: 4,
+      bootParts: [
+        { path: bootBase + 'bootloader_s3.bin', offset: 0 },
+        { path: bootBase + 'partitions_s3_4m.bin', offset: 32768 }
+      ],
+      firmwareOffset: 65536
+    },
+    'ESP32-S3-8M': {
+      chipFamily: 'ESP32-S3',
+      flashSizeMB: 8,
       bootParts: [
         { path: bootBase + 'bootloader_s3.bin', offset: 0 },
         { path: bootBase + 'partitions_s3_8m.bin', offset: 32768 }
+      ],
+      firmwareOffset: 65536
+    },
+    'ESP32-S3-16M': {
+      chipFamily: 'ESP32-S3',
+      flashSizeMB: 16,
+      bootParts: [
+        { path: bootBase + 'bootloader_s3.bin', offset: 0 },
+        { path: bootBase + 'partitions_s3_16m.bin', offset: 32768 }
       ],
       firmwareOffset: 65536
     },
@@ -80,11 +111,15 @@
 
   const VARIANTS = {
     normal: {
-      'ESP32':    '_ESP32.bin',
-      'ESP32-C3': '_ESP32-C3.bin',
-      'ESP32-S2': '_ESP32-S2.bin',
-      'ESP32-S3': '_ESP32-S3_8MB_opi.bin',
-      'ESP8266':  '_ESP8266.bin'
+      'ESP32':         '_ESP32.bin',
+      'ESP32-C3':      '_ESP32-C3.bin',
+      'ESP32-S2':      '_ESP32-S2.bin',
+      // S3 flash-size variants — the Jason2866 fork detects flash size at runtime
+      // and picks the best matching build (most-specific-first algorithm).
+      'ESP32-S3-4M':   '_ESP32-S3_4M_qspi.bin',
+      'ESP32-S3-8M':   '_ESP32-S3_8MB_opi.bin',
+      'ESP32-S3-16M':  '_ESP32-S3_16MB_opi.bin',
+      'ESP8266':       '_ESP8266.bin'
     },
     ethernet: {
       'ESP32':   '_ESP32_Ethernet.bin',
@@ -182,11 +217,15 @@
       });
 
       parts.push({
-        path: CORS_PROXY + asset.browser_download_url,
+        path: resolveAssetUrl(asset),
         offset: config.firmwareOffset
       });
 
-      builds.push({ chipFamily: config.chipFamily, parts: parts });
+      const build = { chipFamily: config.chipFamily, parts: parts };
+      if (config.flashSizeMB) {
+        build.flashSizeMB = config.flashSizeMB;
+      }
+      builds.push(build);
     }
 
     if (builds.length === 0) return null;
