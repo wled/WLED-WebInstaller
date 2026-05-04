@@ -1,0 +1,25 @@
+name: Deploy live site
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages (root)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+          # Preserve any existing pr-* preview subdirectories
+          keep_files: true
+          # Exclude files that don't need to be served
+          exclude_assets: '.github,.gitignore,.idea,*.md,LICENSE,checkhtml.sh,old.htm'
