@@ -45,10 +45,9 @@
     </div>
 
     <div id="proxyBlocked" hidden>
-      <span data-i18n="proxyBlocked1">Firmware downloads are blocked for this page's address.</span><br>
-      <span data-i18n="proxyBlocked2">This installer downloads firmware through a CORS proxy (corsfix.com), and this website's domain has not been registered with it yet - installing now would write invalid data to your device.</span><br>
-      <span data-i18n="proxyBlocked3">Site owner: sign up free and add this domain at </span>
-      <a href="https://app.corsfix.com/auth" target="_blank">app.corsfix.com</a>.<br><br>
+      <span data-i18n="proxyBlocked1">Firmware downloads are blocked for this connection.</span><br>
+      <span data-i18n="proxyBlocked2">This installer downloads firmware through download.wled.me, WLED's official CORS-enabled mirror - something on this network or browser (an ad-blocker, firewall, or DNS filter) is blocking that connection, so installing now would write invalid data to your device.</span><br>
+      <span data-i18n="proxyBlocked3">Try disabling any ad-blocker or VPN for this page, or check your network's firewall rules.</span><br><br>
       <span data-i18n="proxyBlocked4">You can still download a binary manually:</span><br>
       <a href="https://github.com/wled/WLED/releases" target="_blank">
         <button class="btn" slot="activate">GitHub Releases</button>
@@ -231,8 +230,8 @@
       <a href="https://esphome.github.io/esp-web-tools/" target="_blank">ESP Web Tools</a>
       <span data-i18n="powered2"></span><br>
 
-      <span data-i18n="cors1">CORS proxy by </span>
-      <a href="https://corsfix.com" target="_blank">Corsfix</a>
+      <span data-i18n="cors1">Downloads mirrored via </span>
+      <a href="https://download.wled.me" target="_blank">download.wled.me</a>
       <span data-i18n="cors2"></span><br>
 
       <br><a href="https://github.com/wled/WLED" target="_blank">GitHub</a>&emsp;<a href="https://kno.wled.ge" target="_blank">kno.wled.ge</a>

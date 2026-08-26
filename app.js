@@ -15,7 +15,7 @@
   // ---------------------------------------------------------------------
 
   const GITHUB_RELEASES_URL = 'https://api.github.com/repos/wled/WLED/releases';
-  const CORS_PROXY = 'https://proxy.corsfix.com/?';
+  const DOWNLOAD_MIRROR = 'https://download.wled.me';
   const CACHE_KEY = 'wled_webinstaller_releases_cache';
   const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
   const MAX_STABLE_RELEASES = 8;
@@ -541,6 +541,11 @@
     }) || null;
   }
 
+  /** Rewrite a GitHub release asset URL to WLED's CORS-enabled download mirror. */
+  function mirrorUrl(githubUrl) {
+    return DOWNLOAD_MIRROR + new URL(githubUrl).pathname;
+  }
+
   /** Extract the WLED version string from asset filenames (for nightly). */
   function extractVersionFromAssets(assets) {
     for (let i = 0; i < assets.length; i++) {
@@ -609,7 +614,7 @@
       const config = CHIP_CONFIG[chip];
       const parts = await config.bootParts(flashSizeId, flashMode);
       parts.push({
-        path: CORS_PROXY + asset.browser_download_url,
+        path: mirrorUrl(asset.browser_download_url),
         offset: config.firmwareOffset
       });
 
@@ -641,7 +646,7 @@
 
     const parts = await layout.bootParts();
     parts.push({
-      path: CORS_PROXY + asset.browser_download_url,
+      path: mirrorUrl(asset.browser_download_url),
       offset: layout.firmwareOffset
     });
 
@@ -1209,7 +1214,7 @@
     document.getElementById('loadError').hidden = false;
   }
 
-  /** Show a CORS-proxy blocked panel when firmware bytes cannot be fetched. */
+  /** Show a download-blocked panel when firmware bytes cannot be fetched. */
   function showProxyBlocked() {
     document.getElementById('flasher').hidden = true;
     document.getElementById('proxyBlocked').hidden = false;
@@ -1222,29 +1227,30 @@
   }
 
   // ---------------------------------------------------------------------
-  // CORS proxy health check
+  // Download mirror health check
   // ---------------------------------------------------------------------
   // GitHub release assets have no CORS headers, so every firmware download
-  // goes through CORS_PROXY. That proxy only serves domains that have been
-  // registered with it - an unregistered domain gets back a small JSON
-  // error instead of the firmware, which esp-web-tools would otherwise
-  // happily flash as-is. Check once per page load, on a real asset URL, and
-  // refuse to enable Install until we know real firmware bytes come back.
+  // goes through download.wled.me, WLED's official CORS-enabled mirror.
+  // Something on the network (an ad-blocker, firewall, or DNS block) could
+  // still be preventing that connection, which esp-web-tools would otherwise
+  // happily try to flash as garbage. Check once per page load, on a real
+  // asset URL, and refuse to enable Install until we know real firmware
+  // bytes come back.
 
   let proxyHealthChecked = false;
 
-  /** Pick a real firmware asset URL for verifying CORS proxy behavior. */
+  /** Pick a real firmware asset URL for verifying the download mirror. */
   function getHealthCheckUrl(release) {
     const chipEntries = VARIANTS.normal;
     for (const chip in chipEntries) {
       const suffix = resolveSuffix(chipEntries[chip], chip, DEFAULT_FLASH_SIZE);
       const asset = findAsset(release.assets, suffix);
-      if (asset) return CORS_PROXY + asset.browser_download_url;
+      if (asset) return mirrorUrl(asset.browser_download_url);
     }
     return null;
   }
 
-  /** Validate that the CORS proxy returns actual firmware bytes. */
+  /** Validate that the download mirror returns actual firmware bytes. */
   function checkProxyHealth(release) {
     if (proxyHealthChecked) return;
     proxyHealthChecked = true;
@@ -1257,17 +1263,17 @@
 
     fetch(url, { headers: { 'Range': 'bytes=0-1024' } })
       .then(function (res) {
-        if (!res.ok && res.status !== 206) throw new Error('CORS proxy responded with ' + res.status);
+        if (!res.ok && res.status !== 206) throw new Error('Download mirror responded with ' + res.status);
         return res.arrayBuffer().then(function (buf) {
-          if (buf.byteLength === 0) throw new Error('CORS proxy returned empty response');
+          if (buf.byteLength === 0) throw new Error('Download mirror returned empty response');
           const view = new Uint8Array(buf);
-          if (view[0] !== 0xE9) throw new Error('CORS proxy returned invalid firmware data (no ESP image magic byte)');
+          if (view[0] !== 0xE9) throw new Error('Download mirror returned invalid firmware data (no ESP image magic byte)');
           document.getElementById('installBtn').disabled = false;
           document.getElementById('proxyChecking').hidden = true;
         });
       })
       .catch(function (err) {
-        console.warn('CORS proxy health check failed - firmware downloads are likely blocked for this domain.', err);
+        console.warn('Download mirror health check failed - firmware downloads are likely blocked for this network.', err);
         showProxyBlocked();
       });
   }

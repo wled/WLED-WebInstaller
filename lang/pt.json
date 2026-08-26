@@ -9,9 +9,9 @@
   "unsupported3": "Encontre os ficheiros binários aqui:",
   "loadError1": "Não foi possível carregar a lista de versões do WLED a partir do GitHub.",
   "loadError2": "Verifique a sua ligação e recarregue a página, ou transfira um binário manualmente:",
-  "proxyBlocked1": "As transferências de firmware estão bloqueadas para o endereço desta página.",
-  "proxyBlocked2": "Este instalador transfere o firmware através de um proxy CORS (corsfix.com), e o domínio deste site ainda não foi registado nele - instalar agora escreveria dados inválidos no seu dispositivo.",
-  "proxyBlocked3": "Proprietário do site: registe-se gratuitamente e adicione este domínio em ",
+  "proxyBlocked1": "As transferências de firmware estão bloqueadas para esta ligação.",
+  "proxyBlocked2": "Este instalador transfere o firmware através do download.wled.me, o mirror oficial da WLED com suporte a CORS - algo nesta rede ou navegador (um bloqueador de anúncios, firewall ou filtro DNS) está a bloquear essa ligação, pelo que instalar agora escreveria dados inválidos no seu dispositivo.",
+  "proxyBlocked3": "Tente desativar algum bloqueador de anúncios ou VPN para esta página, ou verifique as regras de firewall da sua rede.",
   "proxyBlocked4": "Ainda pode transferir um binário manualmente:",
   "checkingProxy": "A verificar a disponibilidade da transferência do firmware...",
   "step1-1": "Ligue o seu ESP a uma porta USB. Vamos instalar o WLED ",
@@ -57,7 +57,7 @@
   "install": "Instalar",
   "powered1": "Desenvolvido com ",
   "powered2": "",
-  "cors1": "Proxy CORS por ",
+  "cors1": "Transferências espelhadas via ",
   "cors2": "",
   "buildInfoLabel": "Compilação do instalador:"
 }

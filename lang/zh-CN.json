@@ -9,9 +9,9 @@
   "unsupported3": "在此处查找二进制文件：",
   "loadError1": "无法从 GitHub 加载 WLED 版本列表。",
   "loadError2": "请检查您的网络连接并重新加载页面，或手动下载二进制文件：",
-  "proxyBlocked1": "此页面的地址无法下载固件。",
-  "proxyBlocked2": "此安装程序通过 CORS 代理（corsfix.com）下载固件，而该代理尚未注册此网站的域名——现在安装会向您的设备写入无效数据。",
-  "proxyBlocked3": "网站所有者：请免费注册并在此处添加此域名：",
+  "proxyBlocked1": "此连接的固件下载已被阻止。",
+  "proxyBlocked2": "此安装程序通过 download.wled.me（WLED 官方的 CORS 支持镜像）下载固件——您的网络或浏览器中的某些设置（广告拦截器、防火墙或 DNS 过滤器）正在阻止该连接，现在安装会向您的设备写入无效数据。",
+  "proxyBlocked3": "请尝试为此页面禁用广告拦截器或 VPN，或检查您网络的防火墙规则。",
   "proxyBlocked4": "您仍然可以手动下载二进制文件：",
   "checkingProxy": "正在检查固件下载是否可用...",
   "step1-1": "将您的 ESP 插入 USB 端口。我们将向其安装 WLED ",
@@ -57,7 +57,7 @@
   "install": "安装",
   "powered1": "",
   "powered2": " 强力驱动",
-  "cors1": "CORS 代理由 ",
+  "cors1": "下载镜像来自 ",
   "cors2": " 提供支持",
   "buildInfoLabel": "安装程序构建："
 }

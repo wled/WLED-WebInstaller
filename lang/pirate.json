@@ -9,9 +9,9 @@
   "unsupported3": "Find the treasure (binary files) here, arrr:",
   "loadError1": "Blimey! Couldn't fetch the list o' WLED versions from GitHub.",
   "loadError2": "Check yer connection and reload the page, or plunder a binary by hand:",
-  "proxyBlocked1": "Firmware booty be blocked for this port o' call!",
-  "proxyBlocked2": "This here installer fetches firmware through a CORS proxy (corsfix.com), and this ship's flag (domain) ain't been registered with the harbor master yet - settin' sail now would load yer hold with cursed data.",
-  "proxyBlocked3": "Ship's captain: sign up free and register yer flag at ",
+  "proxyBlocked1": "Firmware booty be blocked for this here connection!",
+  "proxyBlocked2": "This here installer fetches firmware through download.wled.me, WLED's own official CORS-friendly cargo ship - somethin' on this network or browser (an ad-blocker, firewall, or DNS filter) be blockin' the route, so settin' sail now would load yer hold with cursed data.",
+  "proxyBlocked3": "Try strikin' the colors on any ad-blocker or VPN for this page, or check yer network's firewall rules, arrr.",
   "proxyBlocked4": "Ye can still plunder a binary by hand:",
   "checkingProxy": "Checkin' if the firmware treasure be reachable...",
   "step1-1": "Plug yer ESP into a USB port, arrr. We'll be loadin' WLED ",
@@ -57,7 +57,7 @@
   "install": "Set Sail!",
   "powered1": "Powered by the winds of ",
   "powered2": "",
-  "cors1": "CORS proxy manned by ",
+  "cors1": "Booty mirrored via ",
   "cors2": "",
   "buildInfoLabel": "Installer built:"
 }

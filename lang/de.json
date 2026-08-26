@@ -9,9 +9,9 @@
   "unsupported3": "Hier finden Sie die Binärdateien:",
   "loadError1": "Die Liste der WLED-Versionen konnte nicht von GitHub geladen werden.",
   "loadError2": "Bitte überprüfen Sie Ihre Verbindung und laden Sie die Seite neu, oder laden Sie eine Binärdatei manuell herunter:",
-  "proxyBlocked1": "Firmware-Downloads sind für die Adresse dieser Seite blockiert.",
-  "proxyBlocked2": "Dieses Installationsprogramm lädt Firmware über einen CORS-Proxy (corsfix.com) herunter, und die Domain dieser Website wurde dort noch nicht registriert - eine Installation würde jetzt ungültige Daten auf Ihr Gerät schreiben.",
-  "proxyBlocked3": "Website-Betreiber: Registrieren Sie sich kostenlos und fügen Sie diese Domain hinzu unter ",
+  "proxyBlocked1": "Firmware-Downloads sind für diese Verbindung blockiert.",
+  "proxyBlocked2": "Dieses Installationsprogramm lädt Firmware über download.wled.me herunter, den offiziellen CORS-fähigen Mirror von WLED - etwas in diesem Netzwerk oder Browser (ein Werbeblocker, eine Firewall oder ein DNS-Filter) blockiert diese Verbindung, sodass eine Installation jetzt ungültige Daten auf Ihr Gerät schreiben würde.",
+  "proxyBlocked3": "Deaktivieren Sie versuchsweise einen Werbeblocker oder ein VPN für diese Seite, oder prüfen Sie die Firewall-Regeln Ihres Netzwerks.",
   "proxyBlocked4": "Sie können weiterhin manuell eine Binärdatei herunterladen:",
   "checkingProxy": "Verfügbarkeit des Firmware-Downloads wird überprüft...",
   "step1-1": "Schließen Sie Ihren ESP an einen USB-Anschluss an. Wir installieren WLED ",
@@ -57,7 +57,7 @@
   "install": "Installieren",
   "powered1": "Bereitgestellt von ",
   "powered2": "",
-  "cors1": "CORS-Proxy von ",
+  "cors1": "Downloads gespiegelt über ",
   "cors2": "",
   "buildInfoLabel": "Installer-Build:"
 }

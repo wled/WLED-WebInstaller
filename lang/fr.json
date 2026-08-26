@@ -9,9 +9,9 @@
   "unsupported3": "Retrouvez les fichiers binaires ici :",
   "loadError1": "Impossible de charger la liste des versions de WLED depuis GitHub.",
   "loadError2": "Veuillez vérifier votre connexion et recharger la page, ou téléchargez un binaire manuellement :",
-  "proxyBlocked1": "Les téléchargements de micrologiciel sont bloqués pour l'adresse de cette page.",
-  "proxyBlocked2": "Cet installateur télécharge le micrologiciel via un proxy CORS (corsfix.com), et le domaine de ce site n'y a pas encore été enregistré - installer maintenant écrirait des données invalides sur votre appareil.",
-  "proxyBlocked3": "Propriétaire du site : inscrivez-vous gratuitement et ajoutez ce domaine sur ",
+  "proxyBlocked1": "Les téléchargements de micrologiciel sont bloqués pour cette connexion.",
+  "proxyBlocked2": "Cet installateur télécharge le micrologiciel via download.wled.me, le miroir officiel de WLED compatible CORS - quelque chose sur ce réseau ou ce navigateur (un bloqueur de publicités, un pare-feu ou un filtre DNS) bloque cette connexion, donc installer maintenant écrirait des données invalides sur votre appareil.",
+  "proxyBlocked3": "Essayez de désactiver un bloqueur de publicités ou un VPN pour cette page, ou vérifiez les règles de pare-feu de votre réseau.",
   "proxyBlocked4": "Vous pouvez toujours télécharger un binaire manuellement :",
   "checkingProxy": "Vérification de la disponibilité du téléchargement du micrologiciel...",
   "step1-1": "Branchez votre ESP sur un port USB. Nous allons y installer WLED ",
@@ -57,7 +57,7 @@
   "install": "Installer",
   "powered1": "Propulsé par ",
   "powered2": "",
-  "cors1": "Proxy CORS par ",
+  "cors1": "Téléchargements mis en miroir via ",
   "cors2": "",
   "buildInfoLabel": "Build de l'installateur :"
 }
