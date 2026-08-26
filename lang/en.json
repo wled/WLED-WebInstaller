@@ -24,6 +24,7 @@
   "chip1": "CP2102 (square chip)",
   "chip2": "CH34x (rectangular chip)",
   "step3": "Get WLED installed and connected in less than 3 minutes!",
+  "versionSelectLabel": "WLED version",
   "loadingVersions": "Loading versions...",
   "plain": "Plain",
   "audioReactive": "Audioreactive",

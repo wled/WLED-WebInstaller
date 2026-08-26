@@ -1,4 +1,0 @@
-#!/bin/sh
-# Keeps build-info.json in sync with every commit. Not active by default -
-# see tools/README.md for the one-time `git config core.hooksPath` setup.
-python3 tools/update_build_info.py && git add build-info.json

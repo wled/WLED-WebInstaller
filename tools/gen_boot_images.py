@@ -18,7 +18,7 @@ Examples
 Regenerate a partition table from its CSV:
 
     python tools/gen_boot_images.py partitions tools/partition_tables/s3_8m.csv \\
-        -o bin/boot/partitions_s3_8m.bin
+        -o bin/boot/partitions/partitions_s3_8m.bin
 
 Re-flag a freshly built 8MB ESP32-S3 bootloader for 4MB/16MB boards. Note
 --offset: it's this chip's real bootloader flash offset (0x1000 for
@@ -34,7 +34,7 @@ partition table + OTA seed, flattened to one file flashed at offset 0):
 
     python tools/gen_boot_images.py merge esp32 --flash-size 4MB \\
         -o bin/boot/esp32_bootloader_v4.bin \\
-        0x1000:bootloader.bin 0x8000:bin/boot/partitions_c3_4m.bin 0xe000:bin/boot/boot_app0.bin
+        0x1000:bootloader.bin 0x8000:bin/boot/partitions/partitions_c3_4m.bin 0xe000:bin/boot/boot_app0.bin
 """
 import argparse
 import hashlib

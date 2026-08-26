@@ -5,7 +5,7 @@ index.html's footer fetches build-info.json at page load to show when this
 copy of the site was last built - useful for telling a stale cached/deployed
 page apart from a fresh one. There's no build step or CI in this repo, so
 nothing produces that file automatically; run this manually before testing
-or deploying, or wire it into a pre-commit hook (see tools/README.md) so it
+or deploying, or wire it into a post-commit hook (see tools/README.md) so it
 never goes stale.
 """
 import json

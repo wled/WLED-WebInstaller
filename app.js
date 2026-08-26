@@ -1261,7 +1261,20 @@
       return;
     }
 
-    fetch(url, { headers: { 'Range': 'bytes=0-1024' } })
+    // Bound how long we wait for the mirror: an unresponsive (rather than
+    // erroring) connection would otherwise leave "Checking..." stuck forever
+    // instead of falling through to showProxyBlocked().
+    const PROXY_HEALTH_TIMEOUT_MS = 10000;
+    let signal;
+    if (typeof AbortSignal !== 'undefined' && typeof AbortSignal.timeout === 'function') {
+      signal = AbortSignal.timeout(PROXY_HEALTH_TIMEOUT_MS);
+    } else {
+      const controller = new AbortController();
+      setTimeout(function () { controller.abort(); }, PROXY_HEALTH_TIMEOUT_MS);
+      signal = controller.signal;
+    }
+
+    fetch(url, { headers: { 'Range': 'bytes=0-1024' }, signal: signal })
       .then(function (res) {
         if (!res.ok && res.status !== 206) throw new Error('Download mirror responded with ' + res.status);
         return res.arrayBuffer().then(function (buf) {

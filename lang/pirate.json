@@ -24,6 +24,7 @@
   "chip1": "CP2102 (the square-shaped doubloon)",
   "chip2": "CH34x (the rectangular-shaped doubloon)",
   "step3": "Get WLED installed and sailin' in less than 3 minutes, arrr!",
+  "versionSelectLabel": "WLED version, arrr",
   "loadingVersions": "Fetchin' versions from the crow's nest...",
   "plain": "Plain ol' Grog",
   "audioReactive": "Audio-Reactive Sea Shanty",

@@ -10,8 +10,8 @@ version / variant / flash size combination the user picks.
 ## Features
 
 - Always up to date - versions come live from the [wled/WLED releases](https://github.com/wled/WLED/releases) API, no manual manifest maintenance.
-- Variant selection (Plain, Audioreactive, Ethernet, ESP8266 CPU frequency test, ESP32 V4, DEBUG, HUB75 Matrix) - unavailable variants for the selected version are hidden automatically.
-- Flash size selection (1MB / 2MB / 4MB / 8MB / 16MB) for boards that ship multiple binaries (ESP32-S3, ESP8266) - unavailable sizes for the selected version/variant are hidden automatically.
+- Variant selection (Plain, Audioreactive, Ethernet, ESP8266 CPU frequency test, ESP32 V4, DEBUG, HUB75 Matrix) - variants unavailable for the selected version stay visible but disabled.
+- Flash size selection (1MB / 2MB / 4MB / 8MB / 16MB) for ESP32, ESP32-C3, ESP32-S2, ESP32-S3, and ESP8266 - sizes unavailable for the selected version/variant stay visible but disabled.
 - HUB75 layout selection (board/pinout picker) when the HUB75 Matrix variant is selected.
 - Multi-language UI, loaded dynamically from `lang/` - see [Localization](#localization).
 
@@ -92,7 +92,7 @@ git config core.hooksPath .githooks
 - `lang/` - one JSON file per language, plus `languages.json` listing them.
 - `bin/boot/` - chip bootloaders and partition tables needed to flash bare chips (WLED release assets only contain the application binary); see [bin/boot/README.md](bin/boot/README.md) for what each file is.
 - `tools/` - maintainer scripts: `gen_boot_images.py` (re)generates the files in `bin/boot/` (see [tools/README.md](tools/README.md)); `update_build_info.py` regenerates `build-info.json` (see [Build info](#build-info)).
-- `.githooks/pre-commit` - optional hook that keeps `build-info.json` current on every commit; not active until you run the `git config core.hooksPath` command above.
+- `.githooks/post-commit` - optional hook that keeps `build-info.json` current after every commit; not active until you run the `git config core.hooksPath` command above.
 - `.github/workflows/deploy-pages.yml` - builds `build-info.json` and publishes to GitHub Pages; see [Deploying](#deploying).
 
 ## License

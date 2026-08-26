@@ -13,6 +13,24 @@ let i18n_languages = {};   // code -> display name, from lang/languages.json
 let i18n_messages = {};    // code -> { key: text }, fetched on demand
 let i18n_currentLang = I18N_FALLBACK_LANG;
 
+/** Read a localStorage key, returning null if storage is unavailable (private mode, blocked, etc). */
+function i18n_safeGetItem(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (err) {
+    return null;
+  }
+}
+
+/** Write a localStorage key, silently ignoring failures if storage is unavailable. */
+function i18n_safeSetItem(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (err) {
+    // Ignore - language selection just won't persist across reloads.
+  }
+}
+
 /** Fetch and parse JSON, throwing on non-2xx responses. */
 function i18n_fetchJson(url) {
   return fetch(url).then(function (res) {
@@ -40,6 +58,11 @@ function i18n_apply() {
     const key = elem.getAttribute('data-i18n');
     const text = messages[key] ?? fallback[key];
     if (text !== undefined) elem.textContent = text;
+  });
+  document.querySelectorAll('[data-i18n-aria-label]').forEach((elem) => {
+    const key = elem.getAttribute('data-i18n-aria-label');
+    const text = messages[key] ?? fallback[key];
+    if (text !== undefined) elem.setAttribute('aria-label', text);
   });
 }
 
@@ -80,13 +103,13 @@ function i18n_populateLanguageSelect() {
 /** Persist the selected language and refresh rendered translations. */
 function changeLanguage() {
   const selectedLang = document.getElementById('languageSelect').value;
-  localStorage.setItem(I18N_LANG_STORAGE_KEY, selectedLang);
+  i18n_safeSetItem(I18N_LANG_STORAGE_KEY, selectedLang);
   i18n(selectedLang);
 }
 
 /** Initialize i18n language metadata, selector wiring, and first render. */
 function i18nInit() {
-  i18n_currentLang = localStorage.getItem(I18N_LANG_STORAGE_KEY) || I18N_FALLBACK_LANG;
+  i18n_currentLang = i18n_safeGetItem(I18N_LANG_STORAGE_KEY) || I18N_FALLBACK_LANG;
 
   i18n_fetchJson('lang/languages.json')
     .catch((err) => {
@@ -96,7 +119,7 @@ function i18nInit() {
     .then((languages) => {
       i18n_languages = languages;
       if (!i18n_languages[i18n_currentLang]) i18n_currentLang = I18N_FALLBACK_LANG;
-      localStorage.setItem(I18N_LANG_STORAGE_KEY, i18n_currentLang);
+      i18n_safeSetItem(I18N_LANG_STORAGE_KEY, i18n_currentLang);
 
       i18n_populateLanguageSelect();
       document.getElementById('languageSelect').addEventListener('change', changeLanguage);

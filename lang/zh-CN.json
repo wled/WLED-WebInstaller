@@ -24,6 +24,7 @@
   "chip1": "CP2102（正方形芯片）",
   "chip2": "CH34x（长方形芯片）",
   "step3": "在不到 3 分钟的时间内安装并连接 WLED！",
+  "versionSelectLabel": "WLED 版本",
   "loadingVersions": "正在加载版本...",
   "plain": "普通版",
   "audioReactive": "音频反应版",
