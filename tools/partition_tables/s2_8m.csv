@@ -1,0 +1,10 @@
+# Name,     Type, SubType,  Offset,   Size
+# 8 MB flash layout used by partitions_s2_8m.bin (ESP32-S2).
+# Same numeric layout as s3_8m.csv - the partition table format doesn't
+# depend on chip family, only on flash size.
+nvs,        data, nvs,      0x9000,   0x5000
+otadata,    data, ota,      0xe000,   0x2000
+app0,       app,  ota_0,    0x10000,  0x200000
+app1,       app,  ota_1,    0x210000, 0x200000
+spiffs,     data, spiffs,   0x410000, 0x3e0000
+coredump,   data, coredump, 0x7f0000, 0x10000

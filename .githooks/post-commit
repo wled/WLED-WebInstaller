@@ -1,0 +1,7 @@
+#!/bin/sh
+# Keeps build-info.json fresh for local testing after every commit. Runs
+# post-commit (not pre-commit) so it captures the commit that was actually
+# just made, not its parent, and reports an accurate dirty flag - both would
+# be wrong if this ran before the commit existed. Not active by default -
+# see tools/README.md for the one-time `git config core.hooksPath` setup.
+python3 tools/update_build_info.py

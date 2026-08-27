@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: WLED firmware issues
+    url: https://github.com/wled/WLED/issues
+    about: Report bugs in WLED itself (not this web installer) here.
+  - name: WLED documentation
+    url: https://kno.wled.ge
+    about: Usage questions, setup guides, and general WLED knowledge base.

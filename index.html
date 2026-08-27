@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content='width=device-width' name='viewport'>
+  <meta name="theme-color" content="#222222">
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Install WLED</title>
+  <script
+    type="module"
+    src="https://unpkg.com/esp-web-tools@10.4.0/dist/web/install-button.js?module"
+  ></script>
+</head>
+
+<body>
+
+  <div class="language-selector-container">
+    <label for="languageSelect" class="language-label">Language:</label>
+    <select id="languageSelect" class="btn language-select"></select>
+  </div>
+
+  <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAAAfCAMAAADazLOuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABLUExURQAAAAB81gCU/zKq///mo7sWMN8bO+ZIYtZaAP9rAP+HMsCiG+TAIOnMS0KqNU7KPnLUZOrq6v///4CAgGhoaL+/v6CgoExMTAAAAAlm4O8AAAAZdFJOU////////////////////////////////wABNAq3AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACN0lEQVRIS73VjVLCMBAEYIr8CYKkrdj3f1J37zaXFCpTO+piaDgbPq9px9VQ0qyrvKj4q6m0Zr1h+M7xF1zRmnWzqV9/0d2jttGotO1uv9dUObwej5oqp7fzWVPl8n69aprzoOUUbbvdIbV3OLwitXc6vSG1d7m8I3feSEN0j2CeNbOY4MxigjOLCc4sZsTV2l1cCyy4wIILLLjAxtykltq2rbTU+qi01N5rXNO2leaFORoija2l5MM5a02ac9Ya16Sk5tgaPrUpjZub0BL6YqSxKwbH77XUUmSkJXSl8QtaMuyJhq5maL5nTKVpZC13VmtMpTFT2g4vJjTuGfMzzXftiUZnhdtgb1xofvypRon5TjNnxYN9zJo6K5ruSIzQtGuVZn0x91rKvdHBvm39E7SyZ4y06Gz8BDBFKzsXmhcwyfsGZ9VpbhoiCinaxPNmGWmWWrNU2jB0q6HvOhN1JUtCixQtp2g51ZVUXIPS2RMAD++T2nY/DrDjOMDO4wC7jmNYj3d73nrXug8Yt9uNB8xNU1cKNXWlUFNXCjV1pZhGTE83m2vWfYf/NGj4Bg1zu5JD3/MnH5ZWfLOksbmGWGjgXMN5/C2GXYGFFW9Nmtle6Xut0Gm+JsayCj8z0nhjGvYJzVf4aSzmNYsr+u7Q2JIdoX3YOQjOslmsW1jJ3120nE9gfo79hTaNdcsqVR610lvO47pllae9ReZ805zKo2a3iaY5c75pTmVCA6dJ5H7N0sr/asPwBehb7ifEhusRAAAAAElFTkSuQmCC">
+
+  <div class="main">
+
+    <h2 data-i18n="welcome">Welcome to the WLED web installer!</h2>
+
+    <div id="unsupported" hidden>
+      <span data-i18n="unsupported1">Sorry, your browser is not yet supported!</span><br>
+      <span data-i18n="unsupported2">Please try on Desktop Chrome or Edge.</span><br>
+      <span data-i18n="unsupported3">Find binary files here:</span><br>
+      <a href="https://github.com/wled/WLED/releases" target="_blank">
+        <button class="btn" slot="activate">GitHub Releases</button>
+      </a>
+    </div>
+
+    <div id="loadError" hidden>
+      <span data-i18n="loadError1">Could not load the list of WLED versions from GitHub.</span><br>
+      <span data-i18n="loadError2">Please check your connection and reload the page, or download a binary manually:</span><br>
+      <a href="https://github.com/wled/WLED/releases" target="_blank">
+        <button class="btn" slot="activate">GitHub Releases</button>
+      </a>
+    </div>
+
+    <div id="proxyBlocked" hidden>
+      <span data-i18n="proxyBlocked1">Firmware downloads are blocked for this connection.</span><br>
+      <span data-i18n="proxyBlocked2">This installer downloads firmware through download.wled.me, WLED's official CORS-enabled mirror - something on this network or browser (an ad-blocker, firewall, or DNS filter) is blocking that connection, so installing now would write invalid data to your device.</span><br>
+      <span data-i18n="proxyBlocked3">Try disabling any ad-blocker or VPN for this page, or check your network's firewall rules.</span><br><br>
+      <span data-i18n="proxyBlocked4">You can still download a binary manually:</span><br>
+      <a href="https://github.com/wled/WLED/releases" target="_blank">
+        <button class="btn" slot="activate">GitHub Releases</button>
+      </a>
+    </div>
+
+    <div id="flasher">
+      <ol>
+        <li><span data-i18n="step1-1">Plug in your ESP to a USB port. We will install WLED </span><span id="verstr">...</span><span data-i18n="step1-2"> to it.</span></li>
+        <li id="coms">
+          <span data-i18n="step2">Hit "Install" and select the correct COM port.</span>
+          <button id="showSerialHelp" data-i18n="noDeviceFound">No device found?</button>
+          <p id="serialHelp" hidden>
+            <span data-i18n="serialHelp1">You might be missing the drivers for your board.</span><br>
+            <span data-i18n="serialHelp2">Here are drivers for chips commonly used in ESP boards:</span><br>
+            <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank" data-i18n="chip1">CP2102 (square chip)</a><br>
+            <a href="https://github.com/nodemcu/nodemcu-devkit/tree/master/Drivers" target="_blank" data-i18n="chip2">CH34x (rectangular chip)</a><br><br>
+            <span data-i18n="serialHelp3">Make sure your USB cable supports data transfer.</span><br><br>
+          </p>
+        </li>
+        <li data-i18n="step3">Get WLED installed and connected in less than 3 minutes!</li>
+      </ol>
+      <br><br>
+
+      <div id="uiModeRow">
+        <div class="row-label" data-i18n="uiMode">Mode:</div>
+        <div class="radio">
+          <input class="radio__input" type="radio" value="basic" name="uimode" id="uimode_basic" checked>
+          <label class="radio__label" for="uimode_basic" id="uimode_basic_label" data-i18n="uiModeBasic">Basic</label>
+          <input class="radio__input" type="radio" value="advanced" name="uimode" id="uimode_advanced">
+          <label class="radio__label" for="uimode_advanced" id="uimode_advanced_label" data-i18n="uiModeAdvanced">Advanced</label>
+        </div>
+        <div class="row-hint" data-i18n="uiModeHint">Basic keeps things simple: pick a version and install at 4MB. Switch to Advanced for flash size, memory type, flash mode, and HUB75 layout options.</div>
+      </div>
+      <br>
+
+      <select id="ver" class="btn" data-i18n-aria-label="versionSelectLabel">
+        <option data-i18n="loadingVersions">Loading versions...</option>
+      </select><br>
+
+      <div class="radio" id="versionGroup">
+        <input class="radio__input" type="radio" value="normal" name="version" id="normal" checked>
+        <label class="radio__label" for="normal" id="normal_label" data-i18n="plain">Plain</label>
+        <input class="radio__input" type="radio" value="audio" name="version" id="audio">
+        <label class="radio__label" for="audio" id="audio_label" data-i18n="audioReactive">Audioreactive</label>
+        <input class="radio__input" type="radio" value="ethernet" name="version" id="ethernet">
+        <label class="radio__label" for="ethernet" id="ethernet_label" data-i18n="ethernet">Ethernet</label>
+        <input class="radio__input" type="radio" value="test" name="version" id="test">
+        <label class="radio__label" for="test" id="test_label" data-i18n="esp8266Test">ESP8266 CPU Frequency Test</label>
+        <input class="radio__input" type="radio" value="v4" name="version" id="v4">
+        <label class="radio__label" for="v4" id="v4_label" data-i18n="esp32V4">ESP32 V4</label>
+        <input class="radio__input" type="radio" value="debug" name="version" id="debug">
+        <label class="radio__label" for="debug" id="debug_label" data-i18n="debug">DEBUG</label>
+        <input class="radio__input" type="radio" value="hub75" name="version" id="hub75">
+        <label class="radio__label" for="hub75" id="hub75_label" data-i18n="hub75">HUB75 Matrix</label>
+      </div>
+      <br>
+
+      <div id="flashSizeRow" hidden>
+        <div class="row-label" data-i18n="flashSize">Flash size:</div>
+        <div class="radio">
+          <input class="radio__input" type="radio" value="1MB" name="flashsize" id="fs_1MB">
+          <label class="radio__label" for="fs_1MB" id="fs_1MB_label">1MB</label>
+          <input class="radio__input" type="radio" value="2MB" name="flashsize" id="fs_2MB">
+          <label class="radio__label" for="fs_2MB" id="fs_2MB_label">2MB</label>
+          <input class="radio__input" type="radio" value="4MB" name="flashsize" id="fs_4MB" checked>
+          <label class="radio__label" for="fs_4MB" id="fs_4MB_label">4MB</label>
+          <input class="radio__input" type="radio" value="8MB" name="flashsize" id="fs_8MB">
+          <label class="radio__label" for="fs_8MB" id="fs_8MB_label">8MB</label>
+          <input class="radio__input" type="radio" value="16MB" name="flashsize" id="fs_16MB">
+          <label class="radio__label" for="fs_16MB" id="fs_16MB_label">16MB</label>
+        </div>
+        <table class="flash-size-chart" id="flashSizeChart">
+          <thead>
+            <tr>
+              <th data-i18n="flashSizeChartSize">Size</th>
+              <th data-i18n="flashSizeChartChips">Applies to</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="fsChart_1MB"><td>1MB</td><td id="fsChart_1MB_chips"></td></tr>
+            <tr id="fsChart_2MB"><td>2MB</td><td id="fsChart_2MB_chips"></td></tr>
+            <tr id="fsChart_4MB"><td>4MB</td><td id="fsChart_4MB_chips"></td></tr>
+            <tr id="fsChart_8MB"><td>8MB</td><td id="fsChart_8MB_chips"></td></tr>
+            <tr id="fsChart_16MB"><td>16MB</td><td id="fsChart_16MB_chips"></td></tr>
+          </tbody>
+        </table>
+        <div class="row-hint" data-i18n="flashSizeHint">Pick the flash size that matches your board - see the chart above for which chip families use each size.</div>
+      </div>
+      <br>
+
+      <div id="memoryTypeRow" hidden>
+        <div class="row-label" data-i18n="memoryType">Memory:</div>
+        <div class="radio">
+          <input class="radio__input" type="radio" value="standard" name="memorytype" id="mt_standard" checked>
+          <label class="radio__label" for="mt_standard" id="mt_standard_label" data-i18n="memStandard">Standard</label>
+          <input class="radio__input" type="radio" value="wrover" name="memorytype" id="mt_wrover">
+          <label class="radio__label" for="mt_wrover" id="mt_wrover_label" data-i18n="memWrover">PSRAM (ESP32 Wrover)</label>
+          <input class="radio__input" type="radio" value="qspi" name="memorytype" id="mt_qspi">
+          <label class="radio__label" for="mt_qspi" id="mt_qspi_label" data-i18n="memQspi">PSRAM (S3 QSPI)</label>
+          <input class="radio__input" type="radio" value="opi" name="memorytype" id="mt_opi">
+          <label class="radio__label" for="mt_opi" id="mt_opi_label" data-i18n="memOpi">PSRAM (S3 OPI)</label>
+        </div>
+        <div class="row-hint" data-i18n="memoryTypeHint">Only matters if your board has PSRAM - pick the option matching its interface. Leave on Standard if unsure or your board has none.</div>
+      </div>
+      <br>
+
+      <div id="flashModeRow" hidden>
+        <div class="row-label" data-i18n="flashMode">Flash mode:</div>
+        <div class="radio">
+          <input class="radio__input" type="radio" value="default" name="flashmode" id="fm_default" checked>
+          <label class="radio__label" for="fm_default" id="fm_default_label" data-i18n="fmDefault">Default</label>
+          <input class="radio__input" type="radio" value="dio" name="flashmode" id="fm_dio">
+          <label class="radio__label" for="fm_dio" id="fm_dio_label" data-i18n="fmDio">DIO</label>
+          <input class="radio__input" type="radio" value="qio" name="flashmode" id="fm_qio">
+          <label class="radio__label" for="fm_qio" id="fm_qio_label" data-i18n="fmQio">QIO</label>
+        </div>
+        <table class="flash-size-chart" id="flashModeChart">
+          <thead>
+            <tr>
+              <th data-i18n="flashModeChartMode">Mode</th>
+              <th data-i18n="flashModeChartChips">Applies to</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="fmChart_dio"><td>DIO</td><td id="fmChart_dio_chips"></td></tr>
+            <tr id="fmChart_qio"><td>QIO</td><td id="fmChart_qio_chips"></td></tr>
+          </tbody>
+        </table>
+        <div class="row-hint" data-i18n="flashModeHint">Default matches the flash mode this release's standard build already uses for each chip - safest choice, and required to match an existing bootloader when updating in place. DIO/QIO force that mode where a matching release build exists - see the chart above for which chip(s) that currently applies to.</div>
+      </div>
+      <br>
+
+      <div id="layoutRow" hidden>
+        <div class="row-label" data-i18n="layout">Layout:</div>
+        <div class="radio">
+          <input class="radio__input" type="radio" value="esp32_default" name="layout" id="layout_esp32_default" checked>
+          <label class="radio__label" for="layout_esp32_default" id="layout_esp32_default_label">ESP32 (default pinout)</label>
+          <input class="radio__input" type="radio" value="esp32_forum" name="layout" id="layout_esp32_forum">
+          <label class="radio__label" for="layout_esp32_forum" id="layout_esp32_forum_label">ESP32 (forum pinout)</label>
+          <input class="radio__input" type="radio" value="hdwf2" name="layout" id="layout_hdwf2">
+          <label class="radio__label" for="layout_hdwf2" id="layout_hdwf2_label">Huidu HD-WF2</label>
+          <input class="radio__input" type="radio" value="matrixportal" name="layout" id="layout_matrixportal">
+          <label class="radio__label" for="layout_matrixportal" id="layout_matrixportal_label">Adafruit MatrixPortal S3</label>
+          <input class="radio__input" type="radio" value="moonhub" name="layout" id="layout_moonhub">
+          <label class="radio__label" for="layout_moonhub" id="layout_moonhub_label">MOONHUB / LilyGO T7-S3</label>
+          <input class="radio__input" type="radio" value="waveshare" name="layout" id="layout_waveshare">
+          <label class="radio__label" for="layout_waveshare" id="layout_waveshare_label">Waveshare ESP32-S3-RGB-Matrix</label>
+        </div>
+        <table class="flash-size-chart" id="layoutChart">
+          <thead>
+            <tr>
+              <th data-i18n="layoutChartBoard">Board</th>
+              <th data-i18n="layoutChartChip">Chip</th>
+              <th data-i18n="layoutChartSize">Flash size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="layoutChart_esp32_default"><td>ESP32 (default pinout)</td><td>ESP32</td><td>4MB</td></tr>
+            <tr id="layoutChart_esp32_forum"><td>ESP32 (forum pinout)</td><td>ESP32</td><td>4MB</td></tr>
+            <tr id="layoutChart_hdwf2"><td>Huidu HD-WF2</td><td>ESP32-S3</td><td>4MB</td></tr>
+            <tr id="layoutChart_matrixportal"><td>Adafruit MatrixPortal S3</td><td>ESP32-S3</td><td>8MB</td></tr>
+            <tr id="layoutChart_moonhub"><td>MOONHUB / LilyGO T7-S3</td><td>ESP32-S3</td><td>16MB</td></tr>
+            <tr id="layoutChart_waveshare"><td>Waveshare ESP32-S3-RGB-Matrix</td><td>ESP32-S3</td><td>32MB</td></tr>
+          </tbody>
+        </table>
+        <div class="row-hint" data-i18n="layoutHint">Pick the board matching your HUB75 setup - see the chart above for the chip and flash size it needs.</div>
+      </div>
+      <br>
+
+      <div class="container inst-button">
+        <esp-web-install-button id="inst" manifest="">
+          <button class="btn" id="installBtn" slot="activate" data-i18n="install" disabled>Install</button>
+        </esp-web-install-button><br>
+        <span id="proxyChecking" data-i18n="checkingProxy">Checking firmware download availability...</span>
+      </div>
+
+      <br><br>
+      <span data-i18n="powered1">Powered by </span>
+      <a href="https://esphome.github.io/esp-web-tools/" target="_blank">ESP Web Tools</a>
+      <span data-i18n="powered2"></span><br>
+
+      <span data-i18n="cors1">Downloads mirrored via </span>
+      <a href="https://download.wled.me" target="_blank">download.wled.me</a>
+      <span data-i18n="cors2"></span><br>
+
+      <br><a href="https://github.com/wled/WLED" target="_blank">GitHub</a>&emsp;<a href="https://kno.wled.ge" target="_blank">kno.wled.ge</a>
+
+      <div id="buildInfo" class="build-info" hidden>
+        <span data-i18n="buildInfoLabel">Installer build:</span>
+        <span id="buildInfoValue"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

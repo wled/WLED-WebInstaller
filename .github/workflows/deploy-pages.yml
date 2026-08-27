@@ -1,0 +1,65 @@
+name: Deploy GitHub Pages
+
+# Regenerates build-info.json fresh on every deploy (so the footer always
+# reflects exactly the commit being served, no stale/manual step needed) and
+# publishes the repository root as-is - this site has no build step.
+#
+# One-time setup after adding this workflow: repo Settings -> Pages ->
+# Build and deployment -> Source -> "GitHub Actions" (replacing "Deploy
+# from a branch"). See README.md "Deploying".
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# Only one deployment at a time; let an in-flight run finish rather than
+# cancel it, so a deploy never gets interrupted mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Update build-info.json
+        run: python tools/update_build_info.py
+
+      - name: Remove .git metadata from the deployed artifact
+        run: rm -rf .git
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site as Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

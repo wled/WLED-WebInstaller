@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest an idea or improvement for the web installer
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion! Please describe what you'd like to see and why.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Is this related to something you ran into, or a board/workflow that isn't well supported today?
+      placeholder: e.g. "I couldn't find a way to..."
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the solution you'd like
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Screenshots, links, related boards/chips/WLED variants, etc.
