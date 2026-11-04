@@ -17,7 +17,7 @@
   "checkingProxy": "Scouting the firmware trade route for passage…",
   "step1-1": "Plug thy ESP into a USB port, brave one. We shall bestow upon it WLED ",
   "step1-2": ".",
-  "step2": "Strike “Install” and choose the true COM port.",
+  "step2": "Strike “Begin Thy Quest” and choose the true COM port.",
   "noDeviceFound": "No device found upon the road?",
   "serialHelp1": "Thou mayest be missing the drivers for thy board.",
   "serialHelp2": "Herein lie drivers for chips oft found in ESP boards:",

@@ -17,7 +17,7 @@
   "checkingProxy": "Check grad, ob die Firmware-Route überhaupt real ist…",
   "step1-1": "Steck deinen ESP in ’nen USB-Port, no cap. Wir droppen gleich WLED ",
   "step1-2": " drauf, fr fr.",
-  "step2": "Hau auf „Installieren” und wähl den richtigen COM-Port.",
+  "step2": "Hau auf „Abliefern” und wähl den richtigen COM-Port.",
   "noDeviceFound": "Kein Gerät da? Big sad.",
   "serialHelp1": "Dir fehlen wahrscheinlich einfach die Treiber für dein Board, ngl.",
   "serialHelp2": "Hier die Treiber für die üblichen Verdächtigen unter den Chips:",

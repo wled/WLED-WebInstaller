@@ -9,6 +9,16 @@
 const I18N_LANG_STORAGE_KEY = 'wled-webinstaller:language';
 const I18N_FALLBACK_LANG = 'en';
 
+// Fun/meme language codes aren't real BCP-47 tags, so <html lang> can't be
+// set to them directly (breaks screen readers / browser language tooling).
+// Maps each one to the real language its text is actually written in -
+// i18n_currentLang itself stays the themed code for translation lookup.
+const I18N_LANG_TAG_OVERRIDES = {
+  'pirate': 'en', 'genz': 'en', 'yoda': 'en', 'leet': 'en', 'medieval': 'en',
+  'corporate': 'en', 'noir': 'en', 'robot': 'en', 'gamer': 'en', 'surfer': 'en',
+  'radio': 'en', 'genz-de': 'de',
+};
+
 let i18n_languages = {};   // code -> display name, from lang/languages.json
 let i18n_messages = {};    // code -> { key: text }, fetched on demand
 let i18n_currentLang = I18N_FALLBACK_LANG;
@@ -53,7 +63,7 @@ function i18n_apply() {
   const fallback = i18n_messages[I18N_FALLBACK_LANG] || {};
   const messages = i18n_messages[i18n_currentLang] || {};
 
-  document.documentElement.lang = i18n_currentLang;
+  document.documentElement.lang = I18N_LANG_TAG_OVERRIDES[i18n_currentLang] || i18n_currentLang;
   document.querySelectorAll('[data-i18n]').forEach((elem) => {
     const key = elem.getAttribute('data-i18n');
     const text = messages[key] ?? fallback[key];

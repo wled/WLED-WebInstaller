@@ -17,7 +17,7 @@
   "checkingProxy": "Checking if the firmware route is actually real rn…",
   "step1-1": "Plug your ESP into a USB port, no cap. We’re about to bless it with WLED ",
   "step1-2": " fr fr.",
-  "step2": "Smash “Install” and pick the right COM port.",
+  "step2": "Smash “Send It” and pick the right COM port.",
   "noDeviceFound": "No device showing up? Big sad.",
   "serialHelp1": "You might just be missing the drivers for your board, ngl.",
   "serialHelp2": "Here’s the drivers for the usual-suspect chips:",

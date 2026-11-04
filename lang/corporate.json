@@ -17,7 +17,7 @@
   "checkingProxy": "Validating firmware download availability, please hold…",
   "step1-1": "Onboard your ESP via a USB port. We’ll deploy WLED ",
   "step1-2": " to drive key outcomes.",
-  "step2": "Action “Install” and align on the correct COM port.",
+  "step2": "Action “Deploy” and align on the correct COM port.",
   "noDeviceFound": "No device detected in the pipeline?",
   "serialHelp1": "You may be missing key driver deliverables for your board.",
   "serialHelp2": "Here are the driver assets for chips commonly leveraged in ESP boards:",

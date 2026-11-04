@@ -17,7 +17,7 @@
   "checkingProxy": "Casing the joint. Checking if the firmware route’s clean…",
   "step1-1": "Plug your ESP into a USB port. We’re putting WLED ",
   "step1-2": " on it. No turning back after this.",
-  "step2": "Hit “Install.” Pick the right COM port. Get it wrong, and this whole thing falls apart.",
+  "step2": "Hit “Do It.” Pick the right COM port. Get it wrong, and this whole thing falls apart.",
   "noDeviceFound": "No device in sight?",
   "serialHelp1": "Could be you’re missing the drivers for your board. Happens to the best of us.",
   "serialHelp2": "Here’s the drivers for the usual suspects in ESP boards:",

@@ -17,7 +17,7 @@
   "checkingProxy": "Sprawdzanie dostępności pobierania firmware…",
   "step1-1": "Podłącz swój ESP do portu USB. Zainstalujemy na nim WLED ",
   "step1-2": ".",
-  "step2": "Kliknij „Zainstaluj” i wybierz właściwy port COM.",
+  "step2": "Kliknij „Instaluj” i wybierz właściwy port COM.",
   "noDeviceFound": "Nie znaleziono urządzenia?",
   "serialHelp1": "Możliwe, że brakuje ci sterowników do twojej płytki.",
   "serialHelp2": "Oto sterowniki do chipów powszechnie używanych w płytkach ESP:",

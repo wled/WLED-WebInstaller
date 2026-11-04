@@ -17,7 +17,7 @@
   "checkingProxy": "Checking firmware download availability, I am…",
   "step1-1": "Into a USB port, your ESP plug you must. WLED ",
   "step1-2": " to it, install we will.",
-  "step2": "“Install” hit, and the correct COM port select, you must.",
+  "step2": "“Install, You Will” hit, and the correct COM port select, you must.",
   "noDeviceFound": "No device found? Hmm.",
   "serialHelp1": "The drivers for your board, missing you might be.",
   "serialHelp2": "Drivers for chips commonly used in ESP boards, here they are:",
