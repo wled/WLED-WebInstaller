@@ -6,6 +6,22 @@
   "pt": "Português",
   "nl": "Nederlands",
   "fr": "Français",
+  "it": "Italiano",
+  "pl": "Polski",
+  "uk": "Українська",
+  "ru": "Русский",
+  "tr": "Türkçe",
   "sv": "Svenska",
-  "pirate": "☠️ Pirate"
+  "pirate": "☠️ Pirate",
+  "genz": "💀 Gen Z",
+  "genz-de": "💀 Gen Z (DE)",
+  "yoda": "🟢 Yoda",
+  "leet": "💻 1337",
+  "medieval": "⚔️ Quest",
+  "corporate": "💼 Corporate",
+  "noir": "🕵️ Noir",
+  "robot": "🤖 Robot",
+  "gamer": "🎮 Gamer",
+  "surfer": "🏄 Surfer",
+  "radio": "📻 Old-Timey"
 }

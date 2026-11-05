@@ -1,4 +1,5 @@
 {
+  "eyebrow": "Open-source WLED installer, arrr!",
   "welcome": "Ahoy! Welcome aboard the WLED web installer, ye scallywag!",
   "uiMode": "Sailin' Style:",
   "uiModeBasic": "Easy Sailin'",
@@ -16,7 +17,7 @@
   "checkingProxy": "Checkin' if the firmware treasure be reachable...",
   "step1-1": "Plug yer ESP into a USB port, arrr. We'll be loadin' WLED ",
   "step1-2": " aboard.",
-  "step2": "Click \"Install\" and pick the right COM port, ye landlubber.",
+  "step2": "Click \"Set Sail!\" and pick the right COM port, ye landlubber.",
   "noDeviceFound": "No ship spotted on the horizon?",
   "serialHelp1": "Ye might be missin' the drivers for yer board, arrr.",
   "serialHelp2": "Here be drivers for chips commonly found on ESP boards:",
